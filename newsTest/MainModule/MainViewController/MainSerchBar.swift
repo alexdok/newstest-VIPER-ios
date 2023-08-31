@@ -8,6 +8,7 @@
 import UIKit
 
 extension MainViewController: UISearchBarDelegate {
+    
     @objc func keyboardWillShow(notification: Notification) {
         guard let userInfo = notification.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }

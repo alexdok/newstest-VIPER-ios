@@ -48,13 +48,20 @@ class MainTableViewCell: UITableViewCell {
         linkCountLabel.text = nil
     }
     
+    func dropShadow() {
+        layer.masksToBounds = false
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.5
+        layer.shadowOffset = CGSize(width: 0, height: 10)
+        layer.shadowRadius = 10
+        
+        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+        layer.shouldRasterize = true
+    }
+
+    
     func setupImageCell(image: UIImage) {
         self.imageCell.image = image
-    }
-    func setLabelsCell() {
-        let countOfClickOnLink = "1"
-        self.linkCountLabel.text = "\(countOfClickOnLink )"
-        self.titleLabel.text = "test"//objectForCell.title
     }
     
    private func setupViewCell() {

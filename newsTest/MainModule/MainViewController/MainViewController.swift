@@ -8,7 +8,9 @@
 import UIKit
 
 protocol MainViewProtocol: AnyObject {
-
+    func  setupRefreshController()
+    func  configureVC()
+    func  viewIsReady(images: [UIImage], titles :[String])
 }
 
 class MainViewController: UIViewController {
@@ -20,7 +22,9 @@ class MainViewController: UIViewController {
     let searchBar = UISearchBar()
     var bottomConstraint: NSLayoutConstraint?
     let alertBuilder = AlertBuilderImpl()
-    
+    var images = [UIImage]()
+    var titles = [String]()
+    var cellModels: [MainTableViewCellViewModel] = []
     
     // MARK: - View lifecycle
     override func viewDidLoad() {
@@ -28,6 +32,7 @@ class MainViewController: UIViewController {
         setupRefreshController()
         configureVC()
         initialize()
+        presenter?.viewDidLoaded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,11 +55,13 @@ class MainViewController: UIViewController {
     func configureVC() {
         view.backgroundColor = .white
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.title = "Table News"
         createTableNews()
         configureTableNews()
     }
     
     @objc func refresh(_ sender: AnyObject) {
+        tableNews.reloadData()
         refreshControl.endRefreshing()
     }
 }
@@ -67,5 +74,16 @@ private extension MainViewController {
 
 // MARK: - MainViewProtocol
 extension MainViewController: MainViewProtocol {
+    func viewIsReady(images: [UIImage], titles: [String]) {
+        onMain {
+            var imageCount = 0
+            for title in titles {
+                let cellModel = MainTableViewCellViewModel(title: title, image: images[imageCount], count: 0)
+                imageCount += 1
+                self.cellModels.append(cellModel)
+            }
+            self.tableNews.reloadData()
+        }
+    }
 }
 

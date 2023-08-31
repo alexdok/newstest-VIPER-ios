@@ -6,19 +6,24 @@
 //
 import UIKit
 
-extension MainViewController:  UITableViewDataSource, UITableViewDelegate {
+extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return cellModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as? MainTableViewCell else { print("fatalError(canot create cell)")
-            return UITableViewCell()
-        }
-        cell.linkCountLabel.text = "asasfasfas"
-        cell.titleLabel.text = "TITLE TESST"
+        let cell = tableView.dequeueReusableCell(for: indexPath) as MainTableViewCell
+        cell.titleLabel.text = cellModels[indexPath.row].title
+        cell.imageCell.image = cellModels[indexPath.row].image
+        cell.linkCountLabel.text =  String(cellModels[indexPath.row].count)
         cell.imageCell.backgroundColor = .green
             return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        cellModels[indexPath.row].count += 1
+        tableNews.reloadData()
     }
     
     func configureTableNews() {
@@ -26,7 +31,7 @@ extension MainViewController:  UITableViewDataSource, UITableViewDelegate {
         tableNews.estimatedRowHeight = UITableView.automaticDimension
         tableNews.dataSource = self
         tableNews.delegate = self
-        tableNews.register(MainTableViewCell.self, forCellReuseIdentifier: "MainTableViewCell")
+        tableNews.register(MainTableViewCell.self)
     }
     
     func createTableNews() {
