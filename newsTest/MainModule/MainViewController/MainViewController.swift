@@ -22,15 +22,11 @@ class MainViewController: UIViewController {
     let searchBar = UISearchBar()
     var bottomConstraint: NSLayoutConstraint?
     let alertBuilder = AlertBuilderImpl()
-    var images = [UIImage]()
-    var titles = [String]()
     var cellModels: [MainTableViewCellViewModel] = []
     
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupRefreshController()
-        configureVC()
         initialize()
         presenter?.viewDidLoaded()
     }
@@ -69,6 +65,8 @@ class MainViewController: UIViewController {
 // MARK: - Private functions
 private extension MainViewController {
     func initialize() {
+        setupRefreshController()
+        configureVC()
     }
 }
 

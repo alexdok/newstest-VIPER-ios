@@ -6,6 +6,7 @@
 //
 
 protocol DetailPresenterProtocol: AnyObject {
+    func viewDidLoaded()
 }
 
 class DetailPresenter {
@@ -17,7 +18,23 @@ class DetailPresenter {
         self.interactor = interactor
         self.router = router
     }
+    
+    func mapper(newsObject: ObjectNewsData) -> ViewModelForDetailView {
+        let image = interactor.image
+        let model = ViewModelForDetailView(author: newsObject.author ?? "",
+                                           title: newsObject.title ?? "",
+                                           description: newsObject.description ?? "",
+                                           url: newsObject.url ?? "",
+                                           image: image,
+                                           publishedAt: newsObject.publishedAt ?? "",
+                                           content: newsObject.content ?? "")
+        return model
+    }
 }
 
 extension DetailPresenter: DetailPresenterProtocol {
+    func viewDidLoaded() {
+        view?.showVC(viewModel: mapper(newsObject: interactor.news))
+    }
 }
+

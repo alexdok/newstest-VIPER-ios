@@ -8,12 +8,11 @@
 import UIKit
 
 class DetailModuleBuilder {
-    static func build() -> DetailViewController {
-        let interactor = DetailInteractor()
+    static func build(image: UIImage, news: ObjectNewsData) -> DetailViewController {
+        let interactor = DetailInteractor(image: image, news: news)
         let router = DetailRouter()
         let presenter = DetailPresenter(interactor: interactor, router: router)
-        let storyboard = UIStoryboard(name: "Detail", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Detail") as! DetailViewController
+        let viewController =  DetailViewController()
         presenter.view  = viewController
         viewController.presenter = presenter
         interactor.presenter = presenter

@@ -11,6 +11,7 @@ protocol MainInteractorProtocol: AnyObject {
     func getNews()
     var arrayTitles: [String] { get }
     var arrayImages: [UIImage] { get }
+    var news: [ObjectNewsData?] { get }
 }
 
 class MainInteractor: MainInteractorProtocol {
@@ -30,7 +31,8 @@ class MainInteractor: MainInteractorProtocol {
     
     func getNews() {
         network.sendRequestForNews(theme: "baseball", page: 1) { [weak self] objectNews in
-            objectNews.forEach { news in
+            self?.news = objectNews
+            self?.news.forEach { news in
                 guard let newsTitle = news?.title, let newsImage = news?.urlToImage else { return }
                 let newsForView = NewsForView(title: newsTitle, urlImage: newsImage)
                 self?.arrayNewsForView.append(newsForView)

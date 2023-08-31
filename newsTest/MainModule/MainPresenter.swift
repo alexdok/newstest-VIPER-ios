@@ -10,6 +10,7 @@ import UIKit
 protocol MainPresenterProtocol: AnyObject {
     func viewDidLoaded()
     func getValuesForView(images: [UIImage], titles:[String])
+    func didCellTapt(title: String, image: UIImage)
 }
 
 class MainPresenter {
@@ -26,6 +27,15 @@ class MainPresenter {
 }
 
 extension MainPresenter: MainPresenterProtocol {
+    func didCellTapt(title: String, image: UIImage) {
+       var newsArray = interactor.news
+       let news = newsArray.first { objectNews in
+           objectNews?.title == title
+        }
+        guard let news = news else { return }
+        router.openDetailController(image: image, news: news ?? ObjectNewsData())
+    }
+    
     func getValuesForView(images: [UIImage], titles: [String]) {
         view?.viewIsReady(images: images, titles: titles)
     }

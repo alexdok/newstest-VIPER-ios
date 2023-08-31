@@ -13,6 +13,8 @@
 		907682E42AA083CF0051F0BB /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907682E02AA083CF0051F0BB /* DetailInteractor.swift */; };
 		907682E52AA083CF0051F0BB /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907682DF2AA083CF0051F0BB /* DetailPresenter.swift */; };
 		907682E72AA089510051F0BB /* MainTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907682E62AA089510051F0BB /* MainTableViewCellViewModel.swift */; };
+		907682EA2AA0D41C0051F0BB /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907682E92AA0D41C0051F0BB /* WebViewController.swift */; };
+		907682EC2AA0D43F0051F0BB /* WebView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907682EB2AA0D43F0051F0BB /* WebView+extension.swift */; };
 		90C4CE632A9F1EF500F53C57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CE622A9F1EF500F53C57 /* AppDelegate.swift */; };
 		90C4CE652A9F1EF500F53C57 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CE642A9F1EF500F53C57 /* SceneDelegate.swift */; };
 		90C4CE6C2A9F1EF600F53C57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90C4CE6B2A9F1EF600F53C57 /* Assets.xcassets */; };
@@ -45,6 +47,8 @@
 		907682DF2AA083CF0051F0BB /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		907682E02AA083CF0051F0BB /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
 		907682E62AA089510051F0BB /* MainTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		907682E92AA0D41C0051F0BB /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		907682EB2AA0D43F0051F0BB /* WebView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WebView+extension.swift"; sourceTree = "<group>"; };
 		90C4CE5F2A9F1EF500F53C57 /* newsTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = newsTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90C4CE622A9F1EF500F53C57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90C4CE642A9F1EF500F53C57 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,12 +101,21 @@
 			isa = PBXGroup;
 			children = (
 				907682DD2AA083CF0051F0BB /* DetailViewController.swift */,
-				907682DC2AA083CF0051F0BB /* DetailModuleBuilder.swift */,
 				907682DF2AA083CF0051F0BB /* DetailPresenter.swift */,
-				907682DE2AA083CF0051F0BB /* DetailRouter.swift */,
 				907682E02AA083CF0051F0BB /* DetailInteractor.swift */,
+				907682DC2AA083CF0051F0BB /* DetailModuleBuilder.swift */,
+				907682DE2AA083CF0051F0BB /* DetailRouter.swift */,
 			);
 			path = DetailModule;
+			sourceTree = "<group>";
+		};
+		907682E82AA0D3E50051F0BB /* WebViewModule */ = {
+			isa = PBXGroup;
+			children = (
+				907682E92AA0D41C0051F0BB /* WebViewController.swift */,
+				907682EB2AA0D43F0051F0BB /* WebView+extension.swift */,
+			);
+			path = WebViewModule;
 			sourceTree = "<group>";
 		};
 		90C4CE562A9F1EF500F53C57 = {
@@ -130,6 +143,7 @@
 				907682DA2AA0700E0051F0BB /* NetworkLayer */,
 				90C4CE782A9F202E00F53C57 /* MainModule */,
 				907682DB2AA083CF0051F0BB /* DetailModule */,
+				907682E82AA0D3E50051F0BB /* WebViewModule */,
 				90C4CE762A9F1F6400F53C57 /* Resources */,
 			);
 			path = newsTest;
@@ -281,12 +295,14 @@
 				90C4CEB02A9F620100F53C57 /* Dictionary+extension.swift in Sources */,
 				90C4CE8E2A9F25CB00F53C57 /* MainTableViewCell.swift in Sources */,
 				90C4CEB92A9F62B800F53C57 /* ObjectNewsData.swift in Sources */,
+				907682EA2AA0D41C0051F0BB /* WebViewController.swift in Sources */,
 				907682E72AA089510051F0BB /* MainTableViewCellViewModel.swift in Sources */,
 				90C4CEAE2A9F61CD00F53C57 /* URL+extension.swift in Sources */,
 				90C4CE882A9F209700F53C57 /* MainModuleBuilder.swift in Sources */,
 				90C4CE632A9F1EF500F53C57 /* AppDelegate.swift in Sources */,
 				90C4CE652A9F1EF500F53C57 /* SceneDelegate.swift in Sources */,
 				90C4CE8A2A9F209700F53C57 /* MainRouter.swift in Sources */,
+				907682EC2AA0D43F0051F0BB /* WebView+extension.swift in Sources */,
 				907682E52AA083CF0051F0BB /* DetailPresenter.swift in Sources */,
 				907682E42AA083CF0051F0BB /* DetailInteractor.swift in Sources */,
 				90C4CEB72A9F628300F53C57 /* News.swift in Sources */,
