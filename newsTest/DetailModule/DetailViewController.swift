@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DetailViewProtocol: AnyObject {
-    func showVC(viewModel: ViewModelForDetailView)
+    func setValuesToViewController(viewModel: ViewModelForDetailView)
 }
 
 class DetailViewController: UIViewController {
@@ -32,6 +32,10 @@ class DetailViewController: UIViewController {
 
         initialize()
         presenter?.viewDidLoaded()
+    }
+    
+    deinit {
+        print("---------------------------------DEINITED--------------------------------")
     }
 }
 
@@ -69,7 +73,7 @@ private extension DetailViewController {
 
 // MARK: - DetailViewProtocol
 extension DetailViewController: DetailViewProtocol {
-    func showVC(viewModel: ViewModelForDetailView) {
+    func setValuesToViewController(viewModel: ViewModelForDetailView) {
         imageView.image = viewModel.image
         labelTitle.text = viewModel.title
         labelDateNews.text = viewModel.publishedAt

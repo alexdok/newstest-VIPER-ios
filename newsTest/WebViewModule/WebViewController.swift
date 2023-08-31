@@ -7,8 +7,14 @@
 import UIKit
 import WebKit
 
+protocol WebViewProtocol: AnyObject {
+   
+}
+
+
 class WebViewController: UIViewController {
     
+    var presenter: WebPresenterProtocol?
     var selectedNews: String?
     var newsURL = ""
     
@@ -31,11 +37,7 @@ class WebViewController: UIViewController {
         let observation = webView.observe(\.estimatedProgress) { [weak self] webView, _ in
             self?.progressView.progress = Float(webView.estimatedProgress)
         }
-        
         webView.load(URLRequest(url: url))
-        
-        // Сохраняем ссылку на observation, чтобы его наблюдение продолжалось
-        // до конца жизненного цикла контроллера
         self.observation = observation
     }
 
@@ -75,5 +77,9 @@ class WebViewController: UIViewController {
             self.progressView.alpha = 0
         }, completion: nil)
     }
+}
+
+extension WebViewController: WebViewProtocol {
+    
 }
 

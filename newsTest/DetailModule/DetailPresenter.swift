@@ -34,7 +34,7 @@ class DetailPresenter {
 
 extension DetailPresenter: DetailPresenterProtocol {
     func viewDidLoaded() {
-        view?.showVC(viewModel: mapper(newsObject: interactor.news))
+        view?.setValuesToViewController(viewModel: mapper(newsObject: interactor.news))
     }
 }
 

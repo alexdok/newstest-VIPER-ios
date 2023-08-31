@@ -15,6 +15,10 @@
 		907682E72AA089510051F0BB /* MainTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907682E62AA089510051F0BB /* MainTableViewCellViewModel.swift */; };
 		907682EA2AA0D41C0051F0BB /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907682E92AA0D41C0051F0BB /* WebViewController.swift */; };
 		907682EC2AA0D43F0051F0BB /* WebView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907682EB2AA0D43F0051F0BB /* WebView+extension.swift */; };
+		907682F12AA0D9E10051F0BB /* WebModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907682ED2AA0D9E10051F0BB /* WebModuleBuilder.swift */; };
+		907682F22AA0D9E10051F0BB /* WebPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907682EE2AA0D9E10051F0BB /* WebPresenter.swift */; };
+		907682F32AA0D9E10051F0BB /* WebRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907682EF2AA0D9E10051F0BB /* WebRouter.swift */; };
+		907682F42AA0D9E10051F0BB /* WebInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907682F02AA0D9E10051F0BB /* WebInteractor.swift */; };
 		90C4CE632A9F1EF500F53C57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CE622A9F1EF500F53C57 /* AppDelegate.swift */; };
 		90C4CE652A9F1EF500F53C57 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CE642A9F1EF500F53C57 /* SceneDelegate.swift */; };
 		90C4CE6C2A9F1EF600F53C57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90C4CE6B2A9F1EF600F53C57 /* Assets.xcassets */; };
@@ -49,6 +53,10 @@
 		907682E62AA089510051F0BB /* MainTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		907682E92AA0D41C0051F0BB /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		907682EB2AA0D43F0051F0BB /* WebView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WebView+extension.swift"; sourceTree = "<group>"; };
+		907682ED2AA0D9E10051F0BB /* WebModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebModuleBuilder.swift; sourceTree = "<group>"; };
+		907682EE2AA0D9E10051F0BB /* WebPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPresenter.swift; sourceTree = "<group>"; };
+		907682EF2AA0D9E10051F0BB /* WebRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRouter.swift; sourceTree = "<group>"; };
+		907682F02AA0D9E10051F0BB /* WebInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebInteractor.swift; sourceTree = "<group>"; };
 		90C4CE5F2A9F1EF500F53C57 /* newsTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = newsTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90C4CE622A9F1EF500F53C57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90C4CE642A9F1EF500F53C57 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +122,10 @@
 			children = (
 				907682E92AA0D41C0051F0BB /* WebViewController.swift */,
 				907682EB2AA0D43F0051F0BB /* WebView+extension.swift */,
+				907682EE2AA0D9E10051F0BB /* WebPresenter.swift */,
+				907682F02AA0D9E10051F0BB /* WebInteractor.swift */,
+				907682EF2AA0D9E10051F0BB /* WebRouter.swift */,
+				907682ED2AA0D9E10051F0BB /* WebModuleBuilder.swift */,
 			);
 			path = WebViewModule;
 			sourceTree = "<group>";
@@ -293,7 +305,9 @@
 				90C4CEB32A9F624F00F53C57 /* RequestBuilder.swift in Sources */,
 				90C4CEA62A9F3EEA00F53C57 /* UITableView+ReusableView.swift in Sources */,
 				90C4CEB02A9F620100F53C57 /* Dictionary+extension.swift in Sources */,
+				907682F32AA0D9E10051F0BB /* WebRouter.swift in Sources */,
 				90C4CE8E2A9F25CB00F53C57 /* MainTableViewCell.swift in Sources */,
+				907682F12AA0D9E10051F0BB /* WebModuleBuilder.swift in Sources */,
 				90C4CEB92A9F62B800F53C57 /* ObjectNewsData.swift in Sources */,
 				907682EA2AA0D41C0051F0BB /* WebViewController.swift in Sources */,
 				907682E72AA089510051F0BB /* MainTableViewCellViewModel.swift in Sources */,
@@ -309,9 +323,11 @@
 				90C4CEA02A9F37C800F53C57 /* MainSerchBar.swift in Sources */,
 				907682E32AA083CF0051F0BB /* DetailRouter.swift in Sources */,
 				90C4CE9E2A9F376500F53C57 /* MainTableView.swift in Sources */,
+				907682F22AA0D9E10051F0BB /* WebPresenter.swift in Sources */,
 				907682E22AA083CF0051F0BB /* DetailModuleBuilder.swift in Sources */,
 				90C4CE9B2A9F314F00F53C57 /* AlertBuilder.swift in Sources */,
 				90C4CEA22A9F3B3900F53C57 /* NetworkMonitorManager.swift in Sources */,
+				907682F42AA0D9E10051F0BB /* WebInteractor.swift in Sources */,
 				90C4CE8C2A9F209700F53C57 /* MainInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
