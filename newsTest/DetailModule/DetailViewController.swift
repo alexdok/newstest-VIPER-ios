@@ -41,6 +41,7 @@ private extension DetailViewController {
         setupConstraints()
         setupButton()
     }
+    
     @objc func buttonTapped() {
         animationTapt()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -48,7 +49,7 @@ private extension DetailViewController {
             if let url = self.urlToFullNews {
                 controller.newsURL = url
                 controller.selectedNews = self.labelTitle.text
-             
+             // пока пушу отсуюда чтобы проверить работоспособность
                 self.present(controller, animated: true)
             }
         }
