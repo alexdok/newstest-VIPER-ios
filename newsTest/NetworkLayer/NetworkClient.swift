@@ -31,7 +31,7 @@ class NetworkManagerImpl: NetworkManager {
     
     func sendRequestForNews( theme: String, page: Int, completion: @escaping ([ObjectNewsData?]) -> Void) {
         let sessionConfig = URLSessionConfiguration.default
-        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+        let session = URLSession(configuration: sessionConfig)
         let URLParams = createParamsForRequest(theme: theme, keyAPI: Constants.apiKey, page: page)
         guard let request = requestBilder.createRequestFrom(url: Constants.url, params: URLParams) else { return }
         
@@ -40,7 +40,13 @@ class NetworkManagerImpl: NetworkManager {
                 do {
                     let news = try JSONDecoder().decode(News.self, from: data)
                     let objectNews = self.mapper.map(news)
-                    completion(objectNews)
+                    var objectNewsFinish = [ObjectNewsData]()
+                    for n in objectNews {
+                        if n?.title != nil {
+                            objectNewsFinish.append(n ?? ObjectNewsData())
+                        }
+                    }
+                    completion(objectNewsFinish)
                 } catch {
                     print(error)
                     let obj: [ObjectNewsData?] = [nil]
@@ -100,7 +106,8 @@ class NetworkManagerImpl: NetworkManager {
 //will need fix!!!!!
     private func createParamsForRequest(theme: String, keyAPI: String, page: Int) -> [String: String] {
         let pageToString = String(page)
-    //    let dateForNews = convertCurrentDateToString()
+        let dateForNewsToday = convertCurrentDateToString(day: .today)
+        let dateForNewsYesterday = convertCurrentDateToString(day: .yesterday)
         
         let URLParams = [
             "q": theme,
@@ -108,7 +115,8 @@ class NetworkManagerImpl: NetworkManager {
             "language": "en",
             "pageSize": "20",
             "page": pageToString,
-         //   "from": dateForNews,
+            "from": dateForNewsYesterday,
+            "to": dateForNewsToday,
             "sortBy": "popularity",
             "apiKey": keyAPI
         ]
@@ -116,20 +124,30 @@ class NetworkManagerImpl: NetworkManager {
     }
 }
 
-private func convertCurrentDateToString() -> String {
+private enum Days {
+    case today
+    case yesterday
+}
+// доработать работу с месяццами
+private func convertCurrentDateToString(day: Days) -> String {
     let date = NSDate()
     let formatter = DateFormatter()
     formatter.dateFormat = "dd"
-    let dayCurrent = formatter.string(from: date as Date)
-    var theDayBefore = "-\(Int(dayCurrent)! - 1)"
+    var dayCurrent = formatter.string(from: date as Date)
+    dayCurrent.insert("-", at: dayCurrent.startIndex)
+    let theDayBefore = "-\(Int(dayCurrent)! - 1 )"
     formatter.dateFormat = "yyyy-MM"
     let newYearAndMonth = formatter.string(from: date as Date)
-    if theDayBefore == "-0" {
-        theDayBefore = "-\(dayCurrent)"
+    switch day {
+    case .today :
+        let dateForNews = newYearAndMonth + dayCurrent
+        return dateForNews
+    case .yesterday:
+        let dateForNews = newYearAndMonth + theDayBefore
+        return dateForNews
     }
-    let dateForNews = newYearAndMonth + theDayBefore
-    return dateForNews
 }
+
 
 private extension NetworkManagerImpl {
     enum Constants {
