@@ -92,7 +92,6 @@ class NetworkManagerImpl: NetworkManager {
                 completion(image)
             }
         }
-        
         task.resume()
     }
 

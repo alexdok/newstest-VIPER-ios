@@ -8,7 +8,7 @@ import UIKit
 import WebKit
 
 protocol WebViewProtocol: AnyObject {
-   
+    func showViewWithViewModel(viewModel: ViewModelForWebView)
 }
 
 
@@ -25,7 +25,7 @@ class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
+        presenter?.viewDidLoaded()
         self.progressView.progress = 0
         title = selectedNews
         
@@ -80,6 +80,13 @@ class WebViewController: UIViewController {
 }
 
 extension WebViewController: WebViewProtocol {
-    
+    func showViewWithViewModel(viewModel: ViewModelForWebView) {
+        selectedNews = viewModel.titel
+        newsURL = viewModel.url
+    }
 }
 
+struct ViewModelForWebView {
+    let titel: String
+    let url: String
+}

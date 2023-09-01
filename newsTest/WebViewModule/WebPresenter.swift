@@ -6,6 +6,7 @@
 //
 
 protocol WebPresenterProtocol: AnyObject {
+    func viewDidLoaded()
 }
 
 class WebPresenter {
@@ -17,7 +18,15 @@ class WebPresenter {
         self.interactor = interactor
         self.router = router
     }
+    
+    func createViewModel() -> ViewModelForWebView {
+        return ViewModelForWebView(titel: interactor.titleNews, url: interactor.urlNews)
+    }
+    
 }
 
 extension WebPresenter: WebPresenterProtocol {
+    func viewDidLoaded() {
+        view?.showViewWithViewModel(viewModel: createViewModel())
+    }
 }

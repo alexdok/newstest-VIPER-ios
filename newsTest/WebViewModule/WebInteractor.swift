@@ -6,8 +6,17 @@
 //
 
 protocol WebInteractorProtocol: AnyObject {
+    var titleNews: String { get }
+    var urlNews: String { get }
 }
 
 class WebInteractor: WebInteractorProtocol {
     weak var presenter: WebPresenterProtocol?
+    let titleNews: String
+    let urlNews: String
+    
+    init(titleNews: String, urlNews: String) {
+        self.titleNews = titleNews
+        self.urlNews = urlNews
+    }
 }

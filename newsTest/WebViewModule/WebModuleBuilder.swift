@@ -8,8 +8,8 @@
 import UIKit
 
 class WebModuleBuilder {
-    static func build() -> WebViewController {
-        let interactor = WebInteractor()
+    static func build(url: String, title: String) -> WebViewController {
+        let interactor = WebInteractor(titleNews: title, urlNews: url)
         let router = WebRouter()
         let presenter = WebPresenter(interactor: interactor, router: router)
         let viewController = WebViewController()

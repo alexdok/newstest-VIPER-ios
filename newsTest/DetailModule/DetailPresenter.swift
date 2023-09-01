@@ -7,6 +7,7 @@
 
 protocol DetailPresenterProtocol: AnyObject {
     func viewDidLoaded()
+    func didTapButtonToFullNews()
 }
 
 class DetailPresenter {
@@ -33,6 +34,13 @@ class DetailPresenter {
 }
 
 extension DetailPresenter: DetailPresenterProtocol {
+    func didTapButtonToFullNews() {
+        let title = interactor.news.title ?? ""
+        let url = interactor.news.url ?? ""
+        router.openFullNewsObWebViewController(title: title, url: url)
+     
+    }
+    
     func viewDidLoaded() {
         view?.setValuesToViewController(viewModel: mapper(newsObject: interactor.news))
     }

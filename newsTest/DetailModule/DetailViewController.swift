@@ -29,7 +29,6 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-
         initialize()
         presenter?.viewDidLoaded()
     }
@@ -48,15 +47,7 @@ private extension DetailViewController {
     
     @objc func buttonTapped() {
         animationTapt()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-        let controller = WebViewController()
-            if let url = self.urlToFullNews {
-                controller.newsURL = url
-                controller.selectedNews = self.labelTitle.text
-             // пока пушу отсуюда чтобы проверить работоспособность
-                self.present(controller, animated: true)
-            }
-        }
+        presenter?.didTapButtonToFullNews()
     }
     
     private func animationTapt() {
