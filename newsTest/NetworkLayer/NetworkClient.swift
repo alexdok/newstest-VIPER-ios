@@ -97,10 +97,10 @@ class NetworkManagerImpl: NetworkManager {
             cacheDataSource.setObject(compressedImage, forKey: key as AnyObject)
         }
     }
-
+//will need fix!!!!!
     private func createParamsForRequest(theme: String, keyAPI: String, page: Int) -> [String: String] {
         let pageToString = String(page)
-        let dateForNews = convertCurrentDateToString()
+    //    let dateForNews = convertCurrentDateToString()
         
         let URLParams = [
             "q": theme,
@@ -108,7 +108,7 @@ class NetworkManagerImpl: NetworkManager {
             "language": "en",
             "pageSize": "20",
             "page": pageToString,
-            "from": dateForNews,
+         //   "from": dateForNews,
             "sortBy": "popularity",
             "apiKey": keyAPI
         ]
@@ -121,9 +121,12 @@ private func convertCurrentDateToString() -> String {
     let formatter = DateFormatter()
     formatter.dateFormat = "dd"
     let dayCurrent = formatter.string(from: date as Date)
-    let theDayBefore = "-\(Int(dayCurrent)! - 1)"
+    var theDayBefore = "-\(Int(dayCurrent)! - 1)"
     formatter.dateFormat = "yyyy-MM"
     let newYearAndMonth = formatter.string(from: date as Date)
+    if theDayBefore == "-0" {
+        theDayBefore = "-\(dayCurrent)"
+    }
     let dateForNews = newYearAndMonth + theDayBefore
     return dateForNews
 }
