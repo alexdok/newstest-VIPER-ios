@@ -134,7 +134,7 @@ private func convertCurrentDateToString(day: Days) -> String {
     formatter.dateFormat = "dd"
     var dayCurrent = formatter.string(from: date as Date)
     dayCurrent.insert("-", at: dayCurrent.startIndex)
-    let theDayBefore = "-\(Int(dayCurrent)! - 1 )"
+    let theDayBefore = "\(Int(dayCurrent)! + 1 )"
     formatter.dateFormat = "yyyy-MM"
     let newYearAndMonth = formatter.string(from: date as Date)
     switch day {
