@@ -14,6 +14,6 @@ class DetailRouter: DetailRouterProtocol {
     func openFullNewsObWebViewController(title: String, url: String) {
         let vc = WebModuleBuilder.build(url: url, title: title)
         
-        viewController?.present(vc, animated: true)
+        viewController?.navigationController?.pushViewController(vc, animated: true)
     }
 }

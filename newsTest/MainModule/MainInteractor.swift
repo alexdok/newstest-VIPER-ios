@@ -30,7 +30,7 @@ class MainInteractor: MainInteractorProtocol {
     
     
     func getNews() {
-        network.sendRequestForNews(theme: "nhl", page: 1) { [weak self] objectNews in
+        network.sendRequestForNews(theme: "football", page: 1) { [weak self] objectNews in
             self?.news = objectNews
             self?.news.forEach { news in
                 guard let newsTitle = news?.title, let newsImage = news?.urlToImage else { return }

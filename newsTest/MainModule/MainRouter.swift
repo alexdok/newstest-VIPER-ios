@@ -14,7 +14,8 @@ class MainRouter: MainRouterProtocol {
     weak var viewController: MainViewController?
     func openDetailController(image: UIImage, news: ObjectNewsData) {
         let vc = DetailModuleBuilder.build(image: image, news: news)
+      
+        viewController?.navigationController?.pushViewController(vc, animated: true)
         
-        viewController?.present(vc, animated: true)
     }
 }
