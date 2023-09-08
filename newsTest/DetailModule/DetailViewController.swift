@@ -101,7 +101,7 @@ extension DetailViewController {
  
         
         NSLayoutConstraint.activate([
-            labelTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            labelTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             labelTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             labelTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             

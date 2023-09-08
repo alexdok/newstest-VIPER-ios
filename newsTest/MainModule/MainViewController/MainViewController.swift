@@ -23,12 +23,15 @@ class MainViewController: UIViewController {
     var bottomConstraint: NSLayoutConstraint?
     let alertBuilder = AlertBuilderImpl()
     var cellModels: [MainTableViewCellViewModel] = []
+    var indicator = ActivityIndicator()
     
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
         presenter?.viewDidLoaded()
+       
+        indicator.showLoading(onView: tableNews)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +54,7 @@ class MainViewController: UIViewController {
     func configureVC() {
         view.backgroundColor = .white
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = "Table News"
+        self.navigationItem.title = "Loading....."
         createTableNews()
         configureTableNews()
     }
@@ -80,6 +83,8 @@ extension MainViewController: MainViewProtocol {
                 imageCount += 1
                 self.cellModels.append(cellModel)
             }
+            self.navigationItem.title = "Table News"
+            self.indicator.hideLoading()
             self.tableNews.reloadData()
         }
     }

@@ -39,6 +39,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
     func createTableNews() {
         view.addSubview(tableNews)
         view.addSubview(searchBar)
+        
         tableNews.translatesAutoresizingMaskIntoConstraints = false
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.delegate = self
