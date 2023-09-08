@@ -86,9 +86,7 @@ class NetworkManagerImpl: NetworkManager {
             }
             if let data = data, error == nil {
                 guard let image = UIImage(data: data) else { return  }
-                
                 self.compressAndCacheImage(image, forKey: urlForImage)
-                
                 completion(image)
             }
         }
@@ -134,7 +132,7 @@ private func convertCurrentDateToString(day: Days) -> String {
     formatter.dateFormat = "dd"
     var dayCurrent = formatter.string(from: date as Date)
     dayCurrent.insert("-", at: dayCurrent.startIndex)
-    let theDayBefore = "\(Int(dayCurrent)! + 1 )"
+    let theDayBefore = "\(Int(dayCurrent)! + 2 )"
     formatter.dateFormat = "yyyy-MM"
     let newYearAndMonth = formatter.string(from: date as Date)
     switch day {

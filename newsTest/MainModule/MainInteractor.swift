@@ -48,8 +48,10 @@ class MainInteractor: MainInteractorProtocol {
             dispatchGroup.enter()
             network.loadImage(urlForImage: news.urlImage) { image in
                 defer { dispatchGroup.leave() }
-                self.arrayTitles.append(news.title)
-                self.arrayImages.append(image)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.arrayTitles.append(news.title)
+                    self.arrayImages.append(image)
+                     }
             }
         }
         dispatchGroup.notify(queue: .main) {

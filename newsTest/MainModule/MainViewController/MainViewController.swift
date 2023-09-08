@@ -1,6 +1,6 @@
 //
 //  MainViewController.swift
-//  Super easy dev
+//  newsTest
 //
 //  Created by алексей ганзицкий on 30.08.2023
 //
@@ -10,7 +10,7 @@ import UIKit
 protocol MainViewProtocol: AnyObject {
     func  setupRefreshController()
     func  configureVC()
-    func  viewIsReady(images: [UIImage], titles :[String])
+    func  viewIsReady(images: [UIImage], titles: [String])
 }
 
 class MainViewController: UIViewController {
@@ -76,17 +76,32 @@ private extension MainViewController {
 // MARK: - MainViewProtocol
 extension MainViewController: MainViewProtocol {
     func viewIsReady(images: [UIImage], titles: [String]) {
-        onMain {
-            var imageCount = 0
-            for title in titles {
-                let cellModel = MainTableViewCellViewModel(title: title, image: images[imageCount], count: 0)
-                imageCount += 1
-                self.cellModels.append(cellModel)
-            }
+        cellModels = createCellModels(images: images, titles: titles)
             self.navigationItem.title = "Table News"
             self.indicator.hideLoading()
             self.tableNews.reloadData()
         }
+    
+    func createCellModels(images: [UIImage], titles: [String]) -> [MainTableViewCellViewModel] {
+        var arrayModelsForCells: [MainTableViewCellViewModel] = []
+        onMain {
+            var imageCount = 0
+            for title in titles {
+                var image = UIImage(named: "noImage")!
+                if imageCount < images.count {
+                    image = images[imageCount]
+                }
+                let cellModel = self.createTableViewModel(image: image, title: title)
+                imageCount += 1
+                arrayModelsForCells.append(cellModel)
+            }
+        }
+        return arrayModelsForCells
+    }
+    
+    func createTableViewModel(image: UIImage, title: String) -> MainTableViewCellViewModel {
+        let model = MainTableViewCellViewModel(title: title, image: image, count: 0)
+        return model
     }
 }
 

@@ -18,6 +18,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
         cell.imageCell.image = cellModels[indexPath.row].image
         cell.linkCountLabel.text =  String(cellModels[indexPath.row].count)
         cell.imageCell.backgroundColor = .green
+        needMoreCells(indexPath: indexPath)
             return cell
     }
     
@@ -26,6 +27,12 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
         cellModels[indexPath.row].count += 1
         presenter?.didCellTapt(title: cellModels[indexPath.row].title, image: cellModels[indexPath.row].image)
         tableNews.reloadData()
+    }
+    
+    func needMoreCells(indexPath: IndexPath) {
+        if  indexPath.row > cellModels.count - 2 {
+            print("\(indexPath.row)")
+        }
     }
     
     func configureTableNews() {
