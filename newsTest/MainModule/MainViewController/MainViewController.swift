@@ -8,9 +8,10 @@
 import UIKit
 
 protocol MainViewProtocol: AnyObject {
-    func  setupRefreshController()
-    func  configureVC()
-    func  viewIsReady(images: [UIImage], titles: [String])
+    func setupRefreshController()
+    func configureVC()
+    func viewIsReady(images: [UIImage], titles: [String])
+    func addNewCells(images: [UIImage], titles: [String])
 }
 
 class MainViewController: UIViewController {
@@ -82,6 +83,12 @@ extension MainViewController: MainViewProtocol {
             self.tableNews.reloadData()
         }
     
+    func addNewCells(images: [UIImage], titles: [String]) {
+     let arrayForAppendModels: [MainTableViewCellViewModel] = createCellModels(images: images, titles: titles)
+        cellModels += arrayForAppendModels
+        self.tableNews.reloadData()
+    }
+    
     func createCellModels(images: [UIImage], titles: [String]) -> [MainTableViewCellViewModel] {
         var arrayModelsForCells: [MainTableViewCellViewModel] = []
         onMain {
@@ -104,4 +111,19 @@ extension MainViewController: MainViewProtocol {
         return model
     }
 }
+
+
+//func viewIsReady(images: [UIImage], titles: [String]) {
+//    onMain {
+//        var imageCount = 0
+//        for title in titles {
+//            let cellModel = MainTableViewCellViewModel(title: title, image: images[imageCount], count: 0)
+//            imageCount += 1
+//            self.cellModels.append(cellModel)
+//        }
+//        self.navigationItem.title = "Table News"
+//        self.indicator.hideLoading()
+//        self.tableNews.reloadData()
+//    }
+//}
 

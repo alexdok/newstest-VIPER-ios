@@ -28,7 +28,7 @@ class MainPresenter {
 
 extension MainPresenter: MainPresenterProtocol {
     func didCellTapt(title: String, image: UIImage) {
-       var newsArray = interactor.news
+       let newsArray = interactor.news
        let news = newsArray.first { objectNews in
            objectNews?.title == title
         }
