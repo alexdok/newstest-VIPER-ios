@@ -5,6 +5,8 @@
 //  Created by алексей ганзицкий on 30.08.2023
 //
 
+import Foundation
+
 protocol DetailPresenterProtocol: AnyObject {
     func viewDidLoaded()
     func didTapButtonToFullNews()
@@ -20,14 +22,24 @@ class DetailPresenter {
         self.router = router
     }
     
+    func formatDate(date: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" //        "2023-02-05T12:00:00Z"
+        guard let convertDate = formatter.date(from: date) else { return ""}
+        formatter.dateFormat = "dd.MMMM.yyyy"
+        let newString = formatter.string(from: convertDate)
+        return newString
+    }
+    
     func mapper(newsObject: ObjectNewsData) -> ViewModelForDetailView {
         let image = interactor.image
+       
         let model = ViewModelForDetailView(author: newsObject.author ?? "",
                                            title: newsObject.title ?? "",
                                            description: newsObject.description ?? "",
                                            url: newsObject.url ?? "",
                                            image: image,
-                                           publishedAt: newsObject.publishedAt ?? "",
+                                           publishedAt: formatDate(date: newsObject.publishedAt ?? ""),
                                            content: newsObject.content ?? "")
         return model
     }

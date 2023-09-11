@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MainInteractorProtocol: AnyObject {
-    func  getNews(theme: String, page: Int)
+    func getNews(theme: String, page: Int)
     func reload()
     var arrayTitles: [String] { get }
     var arrayImages: [UIImage] { get }
