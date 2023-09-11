@@ -36,7 +36,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func configureTableNews() {
-        tableNews.rowHeight = 150
+        tableNews.rowHeight = CGFloat(Constants.tableNewsRowHeight)
         tableNews.estimatedRowHeight = UITableView.automaticDimension
         tableNews.dataSource = self
         tableNews.delegate = self

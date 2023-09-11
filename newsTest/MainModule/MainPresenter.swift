@@ -8,15 +8,19 @@
 import UIKit
 
 protocol MainPresenterProtocol: AnyObject {
-    func viewDidLoaded()
+    func loadViews()
     func getValuesForView(images: [UIImage], titles:[String])
     func didNewsTapt(title: String, image: UIImage)
+    var theme: String { get set }
+    var page: Int { get set }
 }
 
 class MainPresenter {
     weak var view: MainViewProtocol?
-    var router: MainRouterProtocol
-    var interactor: MainInteractorProtocol
+    let router: MainRouterProtocol
+    let interactor: MainInteractorProtocol
+    var theme = "football"
+    var page = 1
     
     init(interactor: MainInteractorProtocol, router: MainRouterProtocol) {
         self.interactor = interactor
@@ -25,6 +29,7 @@ class MainPresenter {
 }
 
 extension MainPresenter: MainPresenterProtocol {
+    
     func didNewsTapt(title: String, image: UIImage) {
        let newsArray = interactor.news
        let news = newsArray.first { objectNews in
@@ -40,8 +45,8 @@ extension MainPresenter: MainPresenterProtocol {
     }
     
     
-    func viewDidLoaded() {
+    func loadViews() {
         interactor.reload()
-        interactor.getNews(theme: "football", page: 1)
+        interactor.getNews(theme: theme, page: page)
     }
 }

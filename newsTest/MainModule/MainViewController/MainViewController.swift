@@ -31,7 +31,7 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
-        presenter?.viewDidLoaded()
+        presenter?.loadViews()
         indicator.showLoading(onView: tableNews)
     }
     
@@ -62,7 +62,7 @@ final class MainViewController: UIViewController {
     
     @objc func refresh(_ sender: AnyObject) {
         cellModels.removeAll()
-        presenter?.viewDidLoaded()
+        presenter?.loadViews()
         tableNews.reloadData()
     }
     

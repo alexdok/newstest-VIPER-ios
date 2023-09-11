@@ -42,6 +42,7 @@
 		90C4CEB72A9F628300F53C57 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CEB62A9F628300F53C57 /* News.swift */; };
 		90C4CEB92A9F62B800F53C57 /* ObjectNewsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CEB82A9F62B800F53C57 /* ObjectNewsData.swift */; };
 		90C4CEBC2A9F8D6F00F53C57 /* MainThreadOverwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CEBB2A9F8D6F00F53C57 /* MainThreadOverwatch.swift */; };
+		90C7A8FC2AAF16B500E1327C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C7A8FB2AAF16B500E1327C /* Constants.swift */; };
 		90FBAFF02AAB162700939B3F /* Activityindicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FBAFEF2AAB162700939B3F /* Activityindicator.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,7 @@
 		90C4CEB62A9F628300F53C57 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		90C4CEB82A9F62B800F53C57 /* ObjectNewsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectNewsData.swift; sourceTree = "<group>"; };
 		90C4CEBB2A9F8D6F00F53C57 /* MainThreadOverwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainThreadOverwatch.swift; sourceTree = "<group>"; };
+		90C7A8FB2AAF16B500E1327C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		90FBAFEF2AAB162700939B3F /* Activityindicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activityindicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +156,7 @@
 				90C4CE772A9F201E00F53C57 /* Applications */,
 				90C4CE9A2A9F314F00F53C57 /* AlertBuilder.swift */,
 				90C4CEBB2A9F8D6F00F53C57 /* MainThreadOverwatch.swift */,
+				90C7A8FB2AAF16B500E1327C /* Constants.swift */,
 				907682DA2AA0700E0051F0BB /* NetworkLayer */,
 				90C4CE782A9F202E00F53C57 /* MainModule */,
 				907682DB2AA083CF0051F0BB /* DetailModule */,
@@ -324,6 +327,7 @@
 				907682E52AA083CF0051F0BB /* DetailPresenter.swift in Sources */,
 				907682E42AA083CF0051F0BB /* DetailInteractor.swift in Sources */,
 				90C4CEB72A9F628300F53C57 /* News.swift in Sources */,
+				90C7A8FC2AAF16B500E1327C /* Constants.swift in Sources */,
 				90C4CEA02A9F37C800F53C57 /* MainSerchBar.swift in Sources */,
 				907682E32AA083CF0051F0BB /* DetailRouter.swift in Sources */,
 				90C4CE9E2A9F376500F53C57 /* MainTableView.swift in Sources */,

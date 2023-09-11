@@ -20,7 +20,7 @@ final class NetworkManagerImpl: NetworkManager {
     private let requestBilder: RequestBuilder
     lazy var cacheDataSource: NSCache<AnyObject, UIImage> = {
         let cache = NSCache<AnyObject, UIImage>()
-        cache.countLimit = 20
+        cache.countLimit = 50
         return cache
     }()
     

@@ -11,8 +11,8 @@ protocol WebPresenterProtocol: AnyObject {
 
 class WebPresenter {
     weak var view: WebViewProtocol?
-    var router: WebRouterProtocol
-    var interactor: WebInteractorProtocol
+    let router: WebRouterProtocol
+    let interactor: WebInteractorProtocol
 
     init(interactor: WebInteractorProtocol, router: WebRouterProtocol) {
         self.interactor = interactor

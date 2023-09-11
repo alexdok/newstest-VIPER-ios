@@ -12,8 +12,8 @@ protocol DetailPresenterProtocol: AnyObject {
 
 class DetailPresenter {
     weak var view: DetailViewProtocol?
-    var router: DetailRouterProtocol
-    var interactor: DetailInteractorProtocol
+    let router: DetailRouterProtocol
+    let interactor: DetailInteractorProtocol
 
     init(interactor: DetailInteractorProtocol, router: DetailRouterProtocol) {
         self.interactor = interactor

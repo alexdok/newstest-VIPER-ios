@@ -9,19 +9,26 @@ import UIKit
 
 extension MainViewController: UISearchBarDelegate {
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        presenter?.theme = searchBar.searchTextField.text ?? "main"
+        presenter?.loadViews()
+        searchBar.searchTextField.text = nil
+    }
+    
     @objc func keyboardWillShow(notification: Notification) {
         guard let userInfo = notification.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         let keyboardHeight = keyboardFrame.height
         bottomConstraint?.constant = -keyboardHeight
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: Constants.standartDurationAnimation) {
             self.view.layoutIfNeeded()
         }
     }
     
     @objc func keyboardWillHide(notification: Notification) {
         bottomConstraint?.constant = 0
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: Constants.standartDurationAnimation) {
             self.view.layoutIfNeeded()
         }
     }
@@ -29,7 +36,7 @@ extension MainViewController: UISearchBarDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         view.endEditing(true)
         bottomConstraint?.constant = 0
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: Constants.standartDurationAnimation) {
             self.view.layoutIfNeeded()
         }
     }
