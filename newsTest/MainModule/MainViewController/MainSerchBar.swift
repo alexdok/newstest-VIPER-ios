@@ -13,6 +13,7 @@ extension MainViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         presenter?.theme = searchBar.searchTextField.text ?? "main"
         presenter?.loadViews()
+        indicator.showLoading(onView: tableNews)
         searchBar.searchTextField.text = nil
     }
     
