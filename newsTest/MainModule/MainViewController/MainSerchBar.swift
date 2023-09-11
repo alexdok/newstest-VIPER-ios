@@ -11,6 +11,7 @@ extension MainViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        cellsNewsForTable.removeAll()
         presenter?.theme = searchBar.searchTextField.text ?? "main"
         presenter?.loadViews()
         indicator.showLoading(onView: tableNews)

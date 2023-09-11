@@ -48,7 +48,7 @@ final class MainTableViewCell: UITableViewCell {
         linkCountLabel.text = nil
     }
     
-    func dropShadow() {
+   private func dropShadow() {
         layer.masksToBounds = false
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.5
@@ -60,7 +60,7 @@ final class MainTableViewCell: UITableViewCell {
     }
 
     
-    func setupImageCell(image: UIImage) {
+   private func setupImageCell(image: UIImage) {
         self.imageCell.image = image
     }
     

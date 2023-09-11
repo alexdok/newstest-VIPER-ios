@@ -154,9 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				90C4CE772A9F201E00F53C57 /* Applications */,
-				90C4CE9A2A9F314F00F53C57 /* AlertBuilder.swift */,
-				90C4CEBB2A9F8D6F00F53C57 /* MainThreadOverwatch.swift */,
-				90C7A8FB2AAF16B500E1327C /* Constants.swift */,
+				90C7A8FD2AAF5FF000E1327C /* SupportingFiles */,
 				907682DA2AA0700E0051F0BB /* NetworkLayer */,
 				90C4CE782A9F202E00F53C57 /* MainModule */,
 				907682DB2AA083CF0051F0BB /* DetailModule */,
@@ -230,6 +228,16 @@
 				90C4CEA52A9F3EEA00F53C57 /* UITableView+ReusableView.swift */,
 			);
 			path = helper;
+			sourceTree = "<group>";
+		};
+		90C7A8FD2AAF5FF000E1327C /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				90C4CE9A2A9F314F00F53C57 /* AlertBuilder.swift */,
+				90C7A8FB2AAF16B500E1327C /* Constants.swift */,
+				90C4CEBB2A9F8D6F00F53C57 /* MainThreadOverwatch.swift */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

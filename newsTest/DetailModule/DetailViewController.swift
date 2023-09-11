@@ -60,8 +60,6 @@ private extension DetailViewController {
     
 }
 
-
-
 // MARK: - DetailViewProtocol
 extension DetailViewController: DetailViewProtocol {
     func setValuesToViewController(viewModel: ViewModelForDetailView) {

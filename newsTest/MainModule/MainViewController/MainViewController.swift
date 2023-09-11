@@ -23,7 +23,7 @@ final class MainViewController: UIViewController {
     let searchBar = UISearchBar()
     var bottomConstraint: NSLayoutConstraint?
     let alertBuilder = AlertBuilderImpl()
-    var cellModels: [MainTableViewCellViewModel] = []
+    var cellsNewsForTable: [MainTableViewCellViewModel] = []
     var indicator = ActivityIndicator()
     
     // MARK: - View lifecycle
@@ -60,7 +60,7 @@ final class MainViewController: UIViewController {
     }
     
     @objc func refresh(_ sender: AnyObject) {
-        cellModels.removeAll()
+        cellsNewsForTable.removeAll()
         presenter?.loadViews()
         tableNews.reloadData()
     }
@@ -82,7 +82,8 @@ private extension MainViewController {
 extension MainViewController: MainViewProtocol {
     
     func viewIsReady(images: [UIImage], titles: [String]) {
-        cellModels = createCellModels(images: images, titles: titles)
+       let cellsModelsForTable = createCellModels(images: images, titles: titles)
+        cellsNewsForTable += cellsModelsForTable
             self.navigationItem.title = "Table News"
             self.indicator.hideLoading()
             self.tableNews.reloadData()
@@ -90,7 +91,7 @@ extension MainViewController: MainViewProtocol {
     
     func addNewCells(images: [UIImage], titles: [String]) {
      let arrayForAppendModels: [MainTableViewCellViewModel] = createCellModels(images: images, titles: titles)
-        cellModels += arrayForAppendModels
+        cellsNewsForTable += arrayForAppendModels
         self.tableNews.reloadData()
     }
     

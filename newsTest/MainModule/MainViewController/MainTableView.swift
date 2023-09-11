@@ -9,14 +9,14 @@ import UIKit
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellModels.count
+        return cellsNewsForTable.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath) as MainTableViewCell
-        cell.titleLabel.text = cellModels[indexPath.row].title
-        cell.imageCell.image = cellModels[indexPath.row].image
-        cell.linkCountLabel.text =  String(cellModels[indexPath.row].count)
+        cell.titleLabel.text = cellsNewsForTable[indexPath.row].title
+        cell.imageCell.image = cellsNewsForTable[indexPath.row].image
+        cell.linkCountLabel.text =  String(cellsNewsForTable[indexPath.row].count)
         cell.imageCell.backgroundColor = .green
         needMoreCells(indexPath: indexPath)
             return cell
@@ -24,13 +24,14 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        cellModels[indexPath.row].count += 1
-        presenter?.didNewsTapt(title: cellModels[indexPath.row].title, image: cellModels[indexPath.row].image)
+        cellsNewsForTable[indexPath.row].count += 1
+        presenter?.didNewsTapt(title: cellsNewsForTable[indexPath.row].title, image: cellsNewsForTable[indexPath.row].image)
         tableNews.reloadData()
     }
     
     func needMoreCells(indexPath: IndexPath) {
-        if indexPath.row > cellModels.count - 2 {
+        if indexPath.row > cellsNewsForTable.count - 2 {
+            print(cellsNewsForTable.count)
         }
     }
     
