@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MainInteractorProtocol: AnyObject {
-    func getNews()
+    func  getNews(theme: String, page: Int)
     var arrayTitles: [String] { get }
     var arrayImages: [UIImage] { get }
     var news: [ObjectNewsData?] { get }
@@ -29,8 +29,8 @@ class MainInteractor: MainInteractorProtocol {
     }
     
     
-    func getNews() {
-        network.sendRequestForNews(theme: "nhl", page: 1) { [weak self] objectNews in
+    func getNews(theme: String, page: Int) {
+        network.sendRequestForNews(theme: theme, page: page) { [weak self] objectNews in
             self?.news = objectNews
             self?.news.forEach { news in
                 guard let newsTitle = news?.title, let newsImage = news?.urlToImage else { return }

@@ -31,7 +31,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         initialize()
         presenter?.viewDidLoaded()
-       
         indicator.showLoading(onView: tableNews)
     }
     
@@ -76,6 +75,7 @@ private extension MainViewController {
 
 // MARK: - MainViewProtocol
 extension MainViewController: MainViewProtocol {
+    
     func viewIsReady(images: [UIImage], titles: [String]) {
         cellModels = createCellModels(images: images, titles: titles)
             self.navigationItem.title = "Table News"
@@ -111,19 +111,3 @@ extension MainViewController: MainViewProtocol {
         return model
     }
 }
-
-
-//func viewIsReady(images: [UIImage], titles: [String]) {
-//    onMain {
-//        var imageCount = 0
-//        for title in titles {
-//            let cellModel = MainTableViewCellViewModel(title: title, image: images[imageCount], count: 0)
-//            imageCount += 1
-//            self.cellModels.append(cellModel)
-//        }
-//        self.navigationItem.title = "Table News"
-//        self.indicator.hideLoading()
-//        self.tableNews.reloadData()
-//    }
-//}
-

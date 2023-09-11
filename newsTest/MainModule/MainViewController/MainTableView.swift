@@ -25,7 +25,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         cellModels[indexPath.row].count += 1
-        presenter?.didCellTapt(title: cellModels[indexPath.row].title, image: cellModels[indexPath.row].image)
+        presenter?.didNewsTapt(title: cellModels[indexPath.row].title, image: cellModels[indexPath.row].image)
         tableNews.reloadData()
     }
     

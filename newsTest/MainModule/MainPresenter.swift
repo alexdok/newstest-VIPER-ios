@@ -10,15 +10,13 @@ import UIKit
 protocol MainPresenterProtocol: AnyObject {
     func viewDidLoaded()
     func getValuesForView(images: [UIImage], titles:[String])
-    func didCellTapt(title: String, image: UIImage)
+    func didNewsTapt(title: String, image: UIImage)
 }
 
 class MainPresenter {
     weak var view: MainViewProtocol?
     var router: MainRouterProtocol
     var interactor: MainInteractorProtocol
-   
-    
     
     init(interactor: MainInteractorProtocol, router: MainRouterProtocol) {
         self.interactor = interactor
@@ -27,7 +25,7 @@ class MainPresenter {
 }
 
 extension MainPresenter: MainPresenterProtocol {
-    func didCellTapt(title: String, image: UIImage) {
+    func didNewsTapt(title: String, image: UIImage) {
        let newsArray = interactor.news
        let news = newsArray.first { objectNews in
            objectNews?.title == title
@@ -40,7 +38,8 @@ extension MainPresenter: MainPresenterProtocol {
         view?.viewIsReady(images: images, titles: titles)
     }
     
+    
     func viewDidLoaded() {
-        interactor.getNews()
+        interactor.getNews(theme: "football", page: 1)
     }
 }
