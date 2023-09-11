@@ -12,7 +12,6 @@ protocol MainViewProtocol: AnyObject {
     func configureVC()
     func finishActivityIndicator()
     func viewIsReady(images: [UIImage], titles: [String])
-    func addNewCells(images: [UIImage], titles: [String])
 }
 
 final class MainViewController: UIViewController {
@@ -96,7 +95,7 @@ extension MainViewController: MainViewProtocol {
     }
     
     func createCellModels(images: [UIImage], titles: [String]) -> [MainTableViewCellViewModel] {
-        var arrayModelsForCells: [MainTableViewCellViewModel] = []
+        var arrayModelsForCells:[MainTableViewCellViewModel] = []
         onMain {
             var imageCount = 0
             for title in titles {

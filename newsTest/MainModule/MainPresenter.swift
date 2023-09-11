@@ -9,6 +9,7 @@ import UIKit
 
 protocol MainPresenterProtocol: AnyObject {
     func loadViews()
+    func loadNewCells() 
     func getValuesForView(images: [UIImage], titles:[String])
     func didNewsTapt(title: String, image: UIImage)
     var theme: String { get set }
@@ -44,6 +45,9 @@ extension MainPresenter: MainPresenterProtocol {
         view?.finishActivityIndicator()
     }
     
+    func loadNewCells() {
+        interactor.getNews(theme: theme, page: page)
+    }
     
     func loadViews() {
         interactor.reload()

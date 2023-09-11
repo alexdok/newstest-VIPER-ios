@@ -30,8 +30,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func needMoreCells(indexPath: IndexPath) {
-        if  indexPath.row > cellModels.count - 2 {
-            print("\(indexPath.row)")
+        if indexPath.row > cellModels.count - 2 {
         }
     }
     
