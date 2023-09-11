@@ -9,6 +9,7 @@ import UIKit
 
 protocol MainInteractorProtocol: AnyObject {
     func  getNews(theme: String, page: Int)
+    func reload()
     var arrayTitles: [String] { get }
     var arrayImages: [UIImage] { get }
     var news: [ObjectNewsData?] { get }
@@ -39,6 +40,13 @@ class MainInteractor: MainInteractorProtocol {
             }
             self?.getImgesAndTitles()
         }
+    }
+    
+    func reload() {
+        arrayImages.removeAll()
+        arrayTitles.removeAll()
+        arrayNewsForView.removeAll()
+        news.removeAll()
     }
     
     

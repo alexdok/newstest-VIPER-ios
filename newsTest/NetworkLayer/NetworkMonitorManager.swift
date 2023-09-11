@@ -6,7 +6,7 @@
 //
 import Network
 
-class NetworkMonitor {
+final class NetworkMonitor {
   static let shared = NetworkMonitor()
   var isReachable: Bool { status == .satisfied }
 

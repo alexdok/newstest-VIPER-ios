@@ -14,7 +14,7 @@ protocol NetworkManager {
     func loadImage(urlForImage: String, completion: @escaping (UIImage) -> Void)
 }
 
-class NetworkManagerImpl: NetworkManager {
+final class NetworkManagerImpl: NetworkManager {
     
     private let mapper: MapNewsToObject
     private let requestBilder: RequestBuilder
@@ -112,7 +112,7 @@ class NetworkManagerImpl: NetworkManager {
             "language": "en",
             "pageSize": "20",
             "page": pageToString,
-            "from": dateForNewsYesterday,
+            "from": "2023-08-20",
             "to": dateForNewsToday,
             "sortBy": "popularity",
             "apiKey": keyAPI

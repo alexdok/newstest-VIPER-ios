@@ -6,7 +6,7 @@
 //
 import UIKit
 
-extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
+extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cellModels.count
@@ -42,7 +42,10 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
         tableNews.delegate = self
         tableNews.register(MainTableViewCell.self)
     }
-    
+}
+
+extension MainViewController {
+    // setup constraints
     func createTableNews() {
         view.addSubview(tableNews)
         view.addSubview(searchBar)

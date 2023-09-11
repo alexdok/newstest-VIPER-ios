@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ActivityIndicator: UIView {
+final class ActivityIndicator: UIView {
     
     var spinner: UIView?
     

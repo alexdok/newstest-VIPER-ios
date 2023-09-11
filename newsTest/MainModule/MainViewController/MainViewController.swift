@@ -10,11 +10,12 @@ import UIKit
 protocol MainViewProtocol: AnyObject {
     func setupRefreshController()
     func configureVC()
+    func finishActivityIndicator()
     func viewIsReady(images: [UIImage], titles: [String])
     func addNewCells(images: [UIImage], titles: [String])
 }
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
 
     // MARK: - Public
     var presenter: MainPresenterProtocol?
@@ -60,7 +61,12 @@ class MainViewController: UIViewController {
     }
     
     @objc func refresh(_ sender: AnyObject) {
+        cellModels.removeAll()
+        presenter?.viewDidLoaded()
         tableNews.reloadData()
+    }
+    
+    func finishActivityIndicator() {
         refreshControl.endRefreshing()
     }
 }

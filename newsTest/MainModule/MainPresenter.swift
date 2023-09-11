@@ -36,10 +36,12 @@ extension MainPresenter: MainPresenterProtocol {
     
     func getValuesForView(images: [UIImage], titles: [String]) {
         view?.viewIsReady(images: images, titles: titles)
+        view?.finishActivityIndicator()
     }
     
     
     func viewDidLoaded() {
+        interactor.reload()
         interactor.getNews(theme: "football", page: 1)
     }
 }
