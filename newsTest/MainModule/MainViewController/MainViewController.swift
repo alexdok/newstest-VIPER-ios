@@ -8,14 +8,12 @@
 import UIKit
 
 protocol MainViewProtocol: AnyObject {
-    func setupRefreshController()
-    func configureVC()
     func finishActivityIndicator()
     func viewIsReady(images: [UIImage], titles: [String])
 }
 
 final class MainViewController: UIViewController {
-
+    
     // MARK: - Public
     var presenter: MainPresenterProtocol?
     let tableNews = UITableView()
@@ -45,13 +43,13 @@ final class MainViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func setupRefreshController() {
+    private func setupRefreshController() {
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         tableNews.addSubview(refreshControl)
     }
     
-    func configureVC() {
+    private  func configureVC() {
         view.backgroundColor = .white
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = "Loading....."
@@ -59,7 +57,7 @@ final class MainViewController: UIViewController {
         configureTableNews()
     }
     
-    @objc func refresh(_ sender: AnyObject) {
+    @objc private func refresh(_ sender: AnyObject) {
         cellsNewsForTable.removeAll()
         presenter?.loadViews()
         tableNews.reloadData()
@@ -82,20 +80,20 @@ private extension MainViewController {
 extension MainViewController: MainViewProtocol {
     
     func viewIsReady(images: [UIImage], titles: [String]) {
-       let cellsModelsForTable = createCellModels(images: images, titles: titles)
+        let cellsModelsForTable = createCellModels(images: images, titles: titles)
         cellsNewsForTable += cellsModelsForTable
-            self.navigationItem.title = "Table News"
-            self.indicator.hideLoading()
-            self.tableNews.reloadData()
-        }
+        self.navigationItem.title = "Table News"
+        self.indicator.hideLoading()
+        self.tableNews.reloadData()
+    }
     
-    func addNewCells(images: [UIImage], titles: [String]) {
-     let arrayForAppendModels: [MainTableViewCellViewModel] = createCellModels(images: images, titles: titles)
+    private func addNewCells(images: [UIImage], titles: [String]) {
+        let arrayForAppendModels: [MainTableViewCellViewModel] = createCellModels(images: images, titles: titles)
         cellsNewsForTable += arrayForAppendModels
         self.tableNews.reloadData()
     }
     
-    func createCellModels(images: [UIImage], titles: [String]) -> [MainTableViewCellViewModel] {
+    private func createCellModels(images: [UIImage], titles: [String]) -> [MainTableViewCellViewModel] {
         var arrayModelsForCells:[MainTableViewCellViewModel] = []
         onMain {
             var imageCount = 0
@@ -112,7 +110,7 @@ extension MainViewController: MainViewProtocol {
         return arrayModelsForCells
     }
     
-    func createTableViewModel(image: UIImage, title: String) -> MainTableViewCellViewModel {
+    private func createTableViewModel(image: UIImage, title: String) -> MainTableViewCellViewModel {
         let model = MainTableViewCellViewModel(title: title, image: image, count: 0)
         return model
     }

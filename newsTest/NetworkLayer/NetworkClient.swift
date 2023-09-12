@@ -73,7 +73,7 @@ final class NetworkManagerImpl: NetworkManager {
         }
         
         let session = URLSession(configuration: .default)
-        let request = URLRequest(url: urlImage, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 4)
+        let request = URLRequest(url: urlImage, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 3)
         
         let task = session.dataTask(with: request) { [weak self] (data, response, error) in
             guard let self = self else { return }
