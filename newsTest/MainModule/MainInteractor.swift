@@ -15,7 +15,7 @@ protocol MainInteractorProtocol: AnyObject {
     var news: [ObjectNewsData?] { get }
 }
 
-class MainInteractor: MainInteractorProtocol {
+final class MainInteractor: MainInteractorProtocol {
     weak var presenter: MainPresenterProtocol?
     
     let network: NetworkManager
@@ -55,11 +55,9 @@ class MainInteractor: MainInteractorProtocol {
         arrayNewsForView.forEach { news in
             dispatchGroup.enter()
             network.loadImage(urlForImage: news.urlImage) { image in
-                defer { dispatchGroup.leave() }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.arrayTitles.append(news.title)
-                    self.arrayImages.append(image)
-                     }
+                self.arrayTitles.append(news.title)
+                self.arrayImages.append(image)
+                dispatchGroup.leave()
             }
         }
         dispatchGroup.notify(queue: .main) {

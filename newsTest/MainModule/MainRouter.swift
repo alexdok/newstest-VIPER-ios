@@ -10,7 +10,7 @@ protocol MainRouterProtocol {
     func openDetailController(image: UIImage, news: ObjectNewsData)
 }
 
-class MainRouter: MainRouterProtocol {
+final class MainRouter: MainRouterProtocol {
     weak var viewController: MainViewController?
     func openDetailController(image: UIImage, news: ObjectNewsData) {
         let vc = DetailModuleBuilder.build(image: image, news: news)

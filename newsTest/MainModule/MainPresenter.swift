@@ -16,7 +16,7 @@ protocol MainPresenterProtocol: AnyObject {
     var page: Int { get set }
 }
 
-class MainPresenter {
+final class MainPresenter {
     weak var view: MainViewProtocol?
     let router: MainRouterProtocol
     let interactor: MainInteractorProtocol
@@ -41,11 +41,13 @@ extension MainPresenter: MainPresenterProtocol {
     }
     
     func getValuesForView(images: [UIImage], titles: [String]) {
+        
         view?.viewIsReady(images: images, titles: titles)
         view?.finishActivityIndicator()
     }
     
     func loadNewCells() {
+        page += 1
         interactor.getNews(theme: theme, page: page)
     }
     
