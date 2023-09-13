@@ -81,7 +81,6 @@ extension MainViewController: MainViewProtocol {
     
     func viewIsReady(images: [UIImage], titles: [String]) {
         let cellsModelsForTable = createCellModels(images: images, titles: titles)
-       
         cellsNewsForTable += cellsModelsForTable
         self.navigationItem.title = "Table News"
         self.indicator.hideLoading()
@@ -106,7 +105,7 @@ extension MainViewController: MainViewProtocol {
     }
     
     private func createTableViewModel(image: UIImage, title: String) -> MainTableViewCellViewModel {
-        let model = MainTableViewCellViewModel(title: title, image: image, count: 0)
+        let model = MainTableViewCellViewModel(title: title, image: image, count: SaveManagerImpl.shared.loadCount(title))
         return model
     }
 }
