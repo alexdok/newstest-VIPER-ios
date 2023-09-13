@@ -28,7 +28,7 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
-        presenter?.loadViews()
+        presenter?.loadFirstsViews()
         indicator.showLoading(onView: tableNews)
     }
     
@@ -59,7 +59,7 @@ final class MainViewController: UIViewController {
     
     @objc private func refresh(_ sender: AnyObject) {
         cellsNewsForTable.removeAll()
-        presenter?.loadViews()
+        presenter?.loadFirstsViews()
         tableNews.reloadData()
     }
     
@@ -85,12 +85,6 @@ extension MainViewController: MainViewProtocol {
         cellsNewsForTable += cellsModelsForTable
         self.navigationItem.title = "Table News"
         self.indicator.hideLoading()
-        self.tableNews.reloadData()
-    }
-    
-    private func addNewCells(images: [UIImage], titles: [String]) {
-        let arrayForAppendModels: [MainTableViewCellViewModel] = createCellModels(images: images, titles: titles)
-        cellsNewsForTable += arrayForAppendModels
         self.tableNews.reloadData()
     }
     

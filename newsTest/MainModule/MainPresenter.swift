@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MainPresenterProtocol: AnyObject {
-    func loadViews()
+    func loadFirstsViews()
     func loadNewCells() 
     func getValuesForView(images: [UIImage], titles:[String])
     func didNewsTapt(title: String, image: UIImage)
@@ -49,7 +49,8 @@ extension MainPresenter: MainPresenterProtocol {
             interactor.getNews(theme: theme, page: page)
     }
     
-    func loadViews() {
+    func loadFirstsViews() {
+        page = 1
         interactor.reload()
         interactor.getNews(theme: theme, page: page)
     }
