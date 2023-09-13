@@ -45,8 +45,8 @@ extension MainPresenter: MainPresenterProtocol {
     }
     
     func loadNewCells() {
-            page += 1
-            interactor.getNews(theme: theme, page: page)
+        page += 1
+        interactor.getNews(theme: theme, page: page)
     }
     
     func loadFirstsViews() {

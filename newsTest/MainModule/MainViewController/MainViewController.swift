@@ -87,6 +87,12 @@ extension MainViewController: MainViewProtocol {
         self.tableNews.reloadData()
     }
     
+    private func checkBadConnection() {
+        let alertModel = AlertModel(title: "Wrong internet connection", message: "please check yourinternet connection and repeat your request")
+       let alert = alertBuilder.createAlert(with: alertModel)
+        present(alert, animated: true)
+    }
+    
     private func createCellModels(images: [UIImage], titles: [String]) -> [MainTableViewCellViewModel] {
         var arrayModelsForCells:[MainTableViewCellViewModel] = []
         onMain {
