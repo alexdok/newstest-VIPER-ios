@@ -33,7 +33,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.row > cellsNewsForTable.count - 2 {
             presenter?.loadNewCells()
             
-            print(cellsNewsForTable.count)
+//            print(cellsNewsForTable.count)
         }
     }
     

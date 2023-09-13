@@ -31,9 +31,10 @@ final class MainInteractor: MainInteractorProtocol {
     
     
     func getNews(theme: String, page: Int) {
+        arrayNewsForView.removeAll()
         network.sendRequestForNews(theme: theme, page: page) { [weak self] objectNews in
-            self?.news = objectNews
-            self?.news.forEach { news in
+            self?.news.append(contentsOf: objectNews) 
+            objectNews.forEach { news in
                 guard let newsTitle = news?.title, let newsImage = news?.urlToImage else { return }
                 let newsForView = NewsForView(title: newsTitle, urlImage: newsImage)
                 self?.arrayNewsForView.append(newsForView)
@@ -49,8 +50,10 @@ final class MainInteractor: MainInteractorProtocol {
         news.removeAll()
     }
     
-    
     func getImgesAndTitles() {
+        arrayImages.removeAll()
+        arrayTitles.removeAll()
+        print(arrayNewsForView.count)
         let dispatchGroup = DispatchGroup()
         arrayNewsForView.forEach { news in
             dispatchGroup.enter()

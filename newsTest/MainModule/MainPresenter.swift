@@ -32,8 +32,7 @@ final class MainPresenter {
 extension MainPresenter: MainPresenterProtocol {
     
     func didNewsTapt(title: String, image: UIImage) {
-       let newsArray = interactor.news
-       let news = newsArray.first { objectNews in
+       let news = interactor.news.first { objectNews in
            objectNews?.title == title
         }
         guard let news = news else { return }
@@ -41,14 +40,13 @@ extension MainPresenter: MainPresenterProtocol {
     }
     
     func getValuesForView(images: [UIImage], titles: [String]) {
-        
         view?.viewIsReady(images: images, titles: titles)
         view?.finishActivityIndicator()
     }
     
     func loadNewCells() {
-        page += 1
-        interactor.getNews(theme: theme, page: page)
+            page += 1
+            interactor.getNews(theme: theme, page: page)
     }
     
     func loadViews() {

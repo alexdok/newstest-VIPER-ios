@@ -82,7 +82,7 @@ extension MainViewController: MainViewProtocol {
     func viewIsReady(images: [UIImage], titles: [String]) {
         let cellsModelsForTable = createCellModels(images: images, titles: titles)
        
-        cellsNewsForTable = cellsModelsForTable
+        cellsNewsForTable += cellsModelsForTable
         self.navigationItem.title = "Table News"
         self.indicator.hideLoading()
         self.tableNews.reloadData()
