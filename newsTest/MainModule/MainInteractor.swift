@@ -18,9 +18,10 @@ protocol MainInteractorProtocol: AnyObject {
 final class MainInteractor: MainInteractorProtocol {
     weak var presenter: MainPresenterProtocol?
     
-    let network: NetworkManager
+    private let network: NetworkManager
+    private let networkMonitor = NetworkMonitor.shared.isReachable
+    private var arrayNewsForView: [NewsForView] = []
     var news = [ObjectNewsData?]()
-    var arrayNewsForView: [NewsForView] = []
     var arrayTitles = [String]()
     var arrayImages = [UIImage]()
     
@@ -28,7 +29,6 @@ final class MainInteractor: MainInteractorProtocol {
         self.presenter = presenter
         self.network = network
     }
-    
     
     func getNews(theme: String, page: Int) {
         arrayNewsForView.removeAll()
@@ -44,16 +44,18 @@ final class MainInteractor: MainInteractorProtocol {
     }
     
     func reload() {
-        arrayImages.removeAll()
-        arrayTitles.removeAll()
+        clearImagesAndTitles()
         arrayNewsForView.removeAll()
         news.removeAll()
     }
     
-    func getImgesAndTitles() {
+    func clearImagesAndTitles() {
         arrayImages.removeAll()
         arrayTitles.removeAll()
-        print(arrayNewsForView.count)
+    }
+    
+    func getImgesAndTitles() {
+        clearImagesAndTitles()
         let dispatchGroup = DispatchGroup()
         arrayNewsForView.forEach { news in
             dispatchGroup.enter()
