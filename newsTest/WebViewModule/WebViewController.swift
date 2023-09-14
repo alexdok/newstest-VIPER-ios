@@ -11,7 +11,7 @@ protocol WebViewProtocol: AnyObject {
     func showViewWithViewModel(viewModel: ViewModelForWebView)
 }
 
-class WebViewController: UIViewController {
+final class WebViewController: UIViewController {
     
     var presenter: WebPresenterProtocol?
     var selectedNews: String?

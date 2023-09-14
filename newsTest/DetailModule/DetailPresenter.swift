@@ -12,7 +12,7 @@ protocol DetailPresenterProtocol: AnyObject {
     func didTapButtonToFullNews()
 }
 
-class DetailPresenter {
+final class DetailPresenter {
     weak var view: DetailViewProtocol?
     let router: DetailRouterProtocol
     let interactor: DetailInteractorProtocol

@@ -10,7 +10,7 @@ protocol WebInteractorProtocol: AnyObject {
     var urlNews: String { get }
 }
 
-class WebInteractor: WebInteractorProtocol {
+final class WebInteractor: WebInteractorProtocol {
     weak var presenter: WebPresenterProtocol?
     let titleNews: String
     let urlNews: String

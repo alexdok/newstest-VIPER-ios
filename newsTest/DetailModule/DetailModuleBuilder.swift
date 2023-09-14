@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailModuleBuilder {
+final class DetailModuleBuilder {
     static func build(image: UIImage, news: ObjectNewsData) -> DetailViewController {
         let interactor = DetailInteractor(image: image, news: news)
         let router = DetailRouter()

@@ -20,6 +20,7 @@ final class MainViewController: UIViewController {
     let tableNews = UITableView()
     let refreshControl = UIRefreshControl()
     let searchBar = UISearchBar()
+    var canGiveNewCells = false
     var bottomConstraint: NSLayoutConstraint?
     let alertBuilder = AlertBuilderImpl()
     var cellsNewsForTable: [MainTableViewCellViewModel] = []

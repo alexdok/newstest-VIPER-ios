@@ -9,7 +9,7 @@ protocol DetailRouterProtocol {
     func openFullNewsObWebViewController(title: String, url: String)
 }
 
-class DetailRouter: DetailRouterProtocol {
+final class DetailRouter: DetailRouterProtocol {
     weak var viewController: DetailViewController?
     func openFullNewsObWebViewController(title: String, url: String) {
         let vc = WebModuleBuilder.build(url: url, title: title)

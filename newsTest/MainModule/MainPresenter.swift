@@ -14,12 +14,14 @@ protocol MainPresenterProtocol: AnyObject {
     func didNewsTapt(title: String, image: UIImage)
     var theme: String { get set }
     var page: Int { get set }
+    var canNewLoad: Bool { get set }
 }
 
 final class MainPresenter {
     weak var view: MainViewProtocol?
     let router: MainRouterProtocol
     let interactor: MainInteractorProtocol
+    var canNewLoad = true
     var theme = "football"
     var page = 1
     
@@ -54,12 +56,14 @@ extension MainPresenter: MainPresenterProtocol {
     func needMoreCells() {
         testConnect()
         page += 1
+    print(page)
         interactor.getNews(theme: theme, page: page)
     }
     
     func loadFirstsViews() {
         testConnect()
         page = 1
+        print(page)
         interactor.reload()
         interactor.getNews(theme: theme, page: page)
     }

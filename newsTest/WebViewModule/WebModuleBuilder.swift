@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WebModuleBuilder {
+final class WebModuleBuilder {
     static func build(url: String, title: String) -> WebViewController {
         let interactor = WebInteractor(titleNews: title, urlNews: url)
         let router = WebRouter()

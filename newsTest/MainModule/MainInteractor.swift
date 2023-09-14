@@ -18,9 +18,8 @@ protocol MainInteractorProtocol: AnyObject {
 
 final class MainInteractor: MainInteractorProtocol {
     weak var presenter: MainPresenterProtocol?
-    
     private let network: NetworkManager
-    private let networkMonitor = NetworkMonitor.shared
+    private let networStatuskMonitor = NetworkMonitor.shared
     private var arrayNewsForView: [NewsForView] = []
     var news = [ObjectNewsData?]()
     var arrayTitles = [String]()
@@ -32,7 +31,7 @@ final class MainInteractor: MainInteractorProtocol {
     }
     
     func checkInternetConnection() -> Bool{
-        return networkMonitor.isReachable
+        return networStatuskMonitor.isReachable
     }
     
     func getNews(theme: String, page: Int) {

@@ -66,32 +66,41 @@ final class NetworkManagerImpl: NetworkManager {
             downloadImageFromURL(urlForImage: urlForImage, completion: completion)
         }
     }
+    private func returnDefaultImage() -> UIImage {
+        if let defaultImage = UIImage(named: "noImage") {
+            return defaultImage
+        }
+        return UIImage()
+    }
 
     func downloadImageFromURL(urlForImage: String, completion: @escaping (UIImage) -> Void) {
         guard let urlImage = URL(string: urlForImage) else {
+            // Если URL недействителен, возвращаем дефолтное изображение
+            completion(returnDefaultImage())
             return
         }
-        
+
         let session = URLSession(configuration: .default)
         let request = URLRequest(url: urlImage, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 3)
-        
+
         let task = session.dataTask(with: request) { [weak self] (data, response, error) in
             guard let self = self else { return }
-            
+
             if let error = error as? URLError, error.code == .timedOut {
-                // If the request times out, use a default image
-                if let defaultImage = UIImage(named: "noImage") {
-                    completion(defaultImage)
-                }
-            }
-            if let data = data, error == nil {
-                guard let image = UIImage(data: data) else { return  }
+                // Если запрос превысил таймаут, возвращаем дефолтное изображение
+            completion(returnDefaultImage())
+            } else if let data = data, let image = UIImage(data: data) {
+                // Если нет ошибки и удалось получить изображение из данных, то возвращаем его
                 self.compressAndCacheImage(image, forKey: urlForImage)
                 completion(image)
+            } else {
+                // Если что-то пошло не так, возвращаем дефолтное изображение
+                completion(returnDefaultImage())
             }
         }
         task.resume()
     }
+
 
     func compressAndCacheImage(_ image: UIImage, forKey key: String) {
         let compressedImage = image.jpegData(compressionQuality: 0.5)
@@ -112,7 +121,7 @@ final class NetworkManagerImpl: NetworkManager {
             "language": "en",
             "pageSize": "20",
             "page": pageToString,
-            "from": "2023-08-20",
+            "from": dateForNewsYesterday,
             "to": dateForNewsToday,
             "sortBy": "popularity",
             "apiKey": keyAPI

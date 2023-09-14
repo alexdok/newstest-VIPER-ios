@@ -8,6 +8,6 @@
 protocol WebRouterProtocol {
 }
 
-class WebRouter: WebRouterProtocol {
+final class WebRouter: WebRouterProtocol {
     weak var viewController: WebViewController?
 }

@@ -9,7 +9,7 @@ protocol WebPresenterProtocol: AnyObject {
     func viewDidLoaded()
 }
 
-class WebPresenter {
+final class WebPresenter {
     weak var view: WebViewProtocol?
     let router: WebRouterProtocol
     let interactor: WebInteractorProtocol

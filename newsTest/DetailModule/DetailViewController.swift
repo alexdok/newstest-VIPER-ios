@@ -11,7 +11,7 @@ protocol DetailViewProtocol: AnyObject {
     func setValuesToViewController(viewModel: ViewModelForDetailView)
 }
 
-class DetailViewController: UIViewController {
+final class DetailViewController: UIViewController {
     // MARK: - Public
     var presenter: DetailPresenterProtocol?
     

@@ -26,14 +26,19 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
          cellsNewsForTable[indexPath.row].count += 1
         let counter = cellsNewsForTable[indexPath.row].count
-        print(counter)
         SaveManagerImpl.shared.save(cellsNewsForTable[indexPath.row].title, count: counter)
         presenter?.didNewsTapt(title: cellsNewsForTable[indexPath.row].title, image: cellsNewsForTable[indexPath.row].image)
         tableNews.reloadData()
     }
     
     func needMoreCells(indexPath: IndexPath) {
-        if indexPath.row > cellsNewsForTable.count - 2 {
+        if indexPath.row > cellsNewsForTable.count - 10 {
+            canGiveNewCells = true
+            print(canGiveNewCells)
+        }
+        if indexPath.row > cellsNewsForTable.count - 2 && canGiveNewCells {
+            canGiveNewCells.toggle()
+            print(canGiveNewCells)
             presenter?.needMoreCells()
         }
     }

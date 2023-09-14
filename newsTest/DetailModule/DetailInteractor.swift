@@ -12,7 +12,7 @@ protocol DetailInteractorProtocol: AnyObject {
     var news: ObjectNewsData { get }
 }
 
-class DetailInteractor: DetailInteractorProtocol {
+final class DetailInteractor: DetailInteractorProtocol {
     weak var presenter: DetailPresenterProtocol?
     let image: UIImage
     let news: ObjectNewsData
