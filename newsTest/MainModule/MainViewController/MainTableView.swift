@@ -34,7 +34,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func needMoreCells(indexPath: IndexPath) {
         if indexPath.row > cellsNewsForTable.count - 2 {
-            presenter?.loadNewCells()
+            presenter?.needMoreCells()
         }
     }
     

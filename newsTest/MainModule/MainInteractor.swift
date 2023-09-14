@@ -10,6 +10,7 @@ import UIKit
 protocol MainInteractorProtocol: AnyObject {
     func getNews(theme: String, page: Int)
     func reload()
+    func checkInternetConnection() -> Bool
     var arrayTitles: [String] { get }
     var arrayImages: [UIImage] { get }
     var news: [ObjectNewsData?] { get }
@@ -19,7 +20,7 @@ final class MainInteractor: MainInteractorProtocol {
     weak var presenter: MainPresenterProtocol?
     
     private let network: NetworkManager
-    private let networkMonitor = NetworkMonitor.shared.isReachable
+    private let networkMonitor = NetworkMonitor.shared
     private var arrayNewsForView: [NewsForView] = []
     var news = [ObjectNewsData?]()
     var arrayTitles = [String]()
@@ -28,6 +29,10 @@ final class MainInteractor: MainInteractorProtocol {
     init(presenter: MainPresenterProtocol? = nil, network: NetworkManager) {
         self.presenter = presenter
         self.network = network
+    }
+    
+    func checkInternetConnection() -> Bool{
+        return networkMonitor.isReachable
     }
     
     func getNews(theme: String, page: Int) {

@@ -9,7 +9,7 @@ import UIKit
 
 protocol MainPresenterProtocol: AnyObject {
     func loadFirstsViews()
-    func loadNewCells() 
+    func needMoreCells() 
     func getValuesForView(images: [UIImage], titles:[String])
     func didNewsTapt(title: String, image: UIImage)
     var theme: String { get set }
@@ -39,17 +39,26 @@ extension MainPresenter: MainPresenterProtocol {
         router.openDetailController(image: image, news: news ?? ObjectNewsData())
     }
     
-    func getValuesForView(images: [UIImage], titles: [String]) {
+    internal func getValuesForView(images: [UIImage], titles: [String]) {
         view?.viewIsReady(images: images, titles: titles)
         view?.finishActivityIndicator()
     }
     
-    func loadNewCells() {
+    private func testConnect() {
+        if !interactor.checkInternetConnection() {
+            let alertModel = AlertModel(title: "Wrong internet connection", message: "please check yourinternet connection and repeat your request")
+            view?.showAlert(text: alertModel)
+        } else { return }
+    }
+    
+    func needMoreCells() {
+        testConnect()
         page += 1
         interactor.getNews(theme: theme, page: page)
     }
     
     func loadFirstsViews() {
+        testConnect()
         page = 1
         interactor.reload()
         interactor.getNews(theme: theme, page: page)

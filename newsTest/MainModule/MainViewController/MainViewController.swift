@@ -9,6 +9,7 @@ import UIKit
 
 protocol MainViewProtocol: AnyObject {
     func finishActivityIndicator()
+    func showAlert(text: AlertModel)
     func viewIsReady(images: [UIImage], titles: [String])
 }
 
@@ -79,18 +80,18 @@ private extension MainViewController {
 // MARK: - MainViewProtocol
 extension MainViewController: MainViewProtocol {
     
+    func showAlert(text: AlertModel) {
+       let alert = alertBuilder.createAlert(with: text)
+        present(alert, animated: true)
+    }
+    
+    
     func viewIsReady(images: [UIImage], titles: [String]) {
         let cellsModelsForTable = createCellModels(images: images, titles: titles)
         cellsNewsForTable += cellsModelsForTable
         self.navigationItem.title = "Table News"
         self.indicator.hideLoading()
         self.tableNews.reloadData()
-    }
-    
-    private func checkBadConnection() {
-        let alertModel = AlertModel(title: "Wrong internet connection", message: "please check yourinternet connection and repeat your request")
-       let alert = alertBuilder.createAlert(with: alertModel)
-        present(alert, animated: true)
     }
     
     private func createCellModels(images: [UIImage], titles: [String]) -> [MainTableViewCellViewModel] {
