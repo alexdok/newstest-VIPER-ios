@@ -35,7 +35,7 @@ extension MainViewController: UISearchBarDelegate {
         }
     }
     
-    private func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         view.endEditing(true)
         bottomConstraint?.constant = 0
         UIView.animate(withDuration: Constants.standartDurationAnimation) {

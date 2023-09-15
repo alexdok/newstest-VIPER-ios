@@ -41,9 +41,9 @@ final class NetworkManagerImpl: NetworkManager {
                     let news = try JSONDecoder().decode(News.self, from: data)
                     let objectNews = self.mapper.map(news)
                     var objectNewsFinish = [ObjectNewsData]()
-                    for n in objectNews {
-                        if n?.title != nil {
-                            objectNewsFinish.append(n ?? ObjectNewsData())
+                    for news in objectNews {
+                        if news?.title != nil {
+                            objectNewsFinish.append(news ?? ObjectNewsData())
                         }
                     }
                     completion(objectNewsFinish)
@@ -158,7 +158,9 @@ private func convertCurrentDateToString(day: Days) -> String {
 private extension NetworkManagerImpl {
     enum Constants {
         static let url = "https://newsapi.org/v2/everything"
-        static let apiKey = "90253efc2978411a9214e198e3374178"
+        static let apiKey = "bd4291cebed94b898dd76406d634bac2"
+        //bd4291cebed94b898dd76406d634bac2
+        //90253efc2978411a9214e198e3374178
     }
 }
 

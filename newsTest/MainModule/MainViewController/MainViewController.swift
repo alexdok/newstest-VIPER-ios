@@ -94,6 +94,7 @@ extension MainViewController: MainViewProtocol {
         self.indicator.hideLoading()
         self.tableNews.reloadData()
     }
+
     
     private func createCellModels(images: [UIImage], titles: [String]) -> [MainTableViewCellViewModel] {
         var arrayModelsForCells:[MainTableViewCellViewModel] = []
