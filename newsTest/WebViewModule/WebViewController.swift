@@ -23,8 +23,35 @@ final class WebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         presenter?.viewDidLoaded()
+        setupUI()
+        addStartValuesForWebView()
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?,
+                               of object: Any?,
+                               change: [NSKeyValueChangeKey : Any]?,
+                               context: UnsafeMutableRawPointer?) {
+        if keyPath == "estimatedProgress" {
+            progressView.progress = Float(webView.estimatedProgress)
+        }
+    }
+
+    func showProgressView() {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+            self.progressView.alpha = 1
+        }, completion: nil)
+    }
+    
+    func hideProgressView() {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+            self.progressView.alpha = 0
+        }, completion: nil)
+    }
+}
+
+extension WebViewController {
+    private func addStartValuesForWebView() {
         self.progressView.progress = 0
         title = selectedNews
         
@@ -38,15 +65,6 @@ final class WebViewController: UIViewController {
         }
         webView.load(URLRequest(url: url))
         self.observation = observation
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?,
-                               of object: Any?,
-                               change: [NSKeyValueChangeKey : Any]?,
-                               context: UnsafeMutableRawPointer?) {
-        if keyPath == "estimatedProgress" {
-            progressView.progress = Float(webView.estimatedProgress)
-        }
     }
     
     private func setupUI() {
@@ -65,16 +83,4 @@ final class WebViewController: UIViewController {
         ])
     }
     
-    func showProgressView() {
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
-            self.progressView.alpha = 1
-        }, completion: nil)
-    }
-    
-    func hideProgressView() {
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
-            self.progressView.alpha = 0
-        }, completion: nil)
-    }
 }
-
