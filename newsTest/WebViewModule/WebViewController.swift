@@ -78,14 +78,3 @@ final class WebViewController: UIViewController {
     }
 }
 
-extension WebViewController: WebViewProtocol {
-    func showViewWithViewModel(viewModel: ViewModelForWebView) {
-        selectedNews = viewModel.titel
-        newsURL = viewModel.url
-    }
-}
-
-struct ViewModelForWebView {
-    let titel: String
-    let url: String
-}
