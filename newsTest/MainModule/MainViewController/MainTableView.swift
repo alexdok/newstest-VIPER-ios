@@ -32,15 +32,22 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
   private func needMoreCells(indexPath: IndexPath) {
-        if indexPath.row == cellsNewsForTable.count - 10 {
-            canGiveNewCells = true
-            print(canGiveNewCells)
-        }
-        if indexPath.row > cellsNewsForTable.count - 2 && canGiveNewCells {
-            canGiveNewCells.toggle()
-            print(canGiveNewCells)
-            presenter?.needMoreCells()
-        }
+      switch indexPath.row {
+      case cellsNewsForTable.count - 10:
+          canGiveNewCells = true
+      case let row where row > cellsNewsForTable.count - 2 && canGiveNewCells == true :
+          canGiveNewCells.toggle()
+          presenter?.needMoreCells()
+      default: break
+      }
+//        if indexPath.row == cellsNewsForTable.count - 10 {
+//            canGiveNewCells = true
+//        }
+//        if indexPath.row > cellsNewsForTable.count - 2 && canGiveNewCells {
+//            canGiveNewCells.toggle()
+//            print(canGiveNewCells)
+//            presenter?.needMoreCells()
+//        }
     }
     
     func configureTableNews() {

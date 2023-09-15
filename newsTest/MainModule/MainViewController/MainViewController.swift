@@ -17,12 +17,12 @@ final class MainViewController: UIViewController {
     
     // MARK: - Public
     var presenter: MainPresenterProtocol?
+    let searchBar = UISearchBar()
     let tableNews = UITableView()
     private let refreshControler = UIRefreshControl()
-    let searchBar = UISearchBar()
+    private let alertBuilder = AlertBuilderImpl()
     var canGiveNewCells = false
     var bottomConstraint: NSLayoutConstraint?
-    private let alertBuilder = AlertBuilderImpl()
     var cellsNewsForTable: [MainTableViewCellViewModel] = []
     var indicator = ActivityIndicator()
     
