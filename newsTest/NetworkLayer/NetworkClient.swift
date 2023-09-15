@@ -154,7 +154,6 @@ private func convertCurrentDateToString(day: Days) -> String {
     }
 }
 
-
 private extension NetworkManagerImpl {
     enum Constants {
         static let url = "https://newsapi.org/v2/everything"

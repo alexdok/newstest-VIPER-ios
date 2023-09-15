@@ -15,7 +15,7 @@ protocol MainViewProtocol: AnyObject {
 
 final class MainViewController: UIViewController {
     
-    // MARK: - Public
+    // MARK: - prop
     var presenter: MainPresenterProtocol?
     let searchBar = UISearchBar()
     let tableNews = UITableView()
@@ -45,20 +45,6 @@ final class MainViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    private func setupRefreshController() {
-        refreshControler.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControler.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
-        tableNews.addSubview(refreshControler)
-    }
-    
-    private func configureVC() {
-        view.backgroundColor = .white
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = "Loading....."
-        createTableNews()
-        configureTableNews()
-    }
-    
     @objc private func refresh(_ sender: AnyObject) {
         cellsNewsForTable.removeAll()
         presenter?.loadFirstsViews()
@@ -76,6 +62,20 @@ private extension MainViewController {
         setupRefreshController()
         configureVC()
     }
+    
+    private func setupRefreshController() {
+        refreshControler.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControler.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        tableNews.addSubview(refreshControler)
+    }
+    
+    private func configureVC() {
+        view.backgroundColor = .white
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.title = "Loading....."
+        createTableNews()
+        configureTableNews()
+    }
 }
 
 // MARK: - MainViewProtocol
@@ -86,15 +86,18 @@ extension MainViewController: MainViewProtocol {
         present(alert, animated: true)
     }
     
-    
    internal func viewIsReady(images: [UIImage], titles: [String]) {
         let cellsModelsForTable = createCellModels(images: images, titles: titles)
         cellsNewsForTable += cellsModelsForTable
         self.navigationItem.title = "Table News"
         self.indicator.hideLoading()
         self.tableNews.reloadData()
+       getOnTOp()
     }
 
+    private func getOnTOp() {
+        tableNews.scrollToRow(at: IndexPath(row: 1, section: 0), at: .top, animated: true)
+    }
     
     private func createCellModels(images: [UIImage], titles: [String]) -> [MainTableViewCellViewModel] {
         var arrayModelsForCells:[MainTableViewCellViewModel] = []

@@ -39,7 +39,7 @@ final class WebViewController: UIViewController {
         webView.load(URLRequest(url: url))
         self.observation = observation
     }
-
+    
     override func observeValue(forKeyPath keyPath: String?,
                                of object: Any?,
                                change: [NSKeyValueChangeKey : Any]?,
@@ -52,7 +52,7 @@ final class WebViewController: UIViewController {
     private func setupUI() {
         webView.frame.size.width = view.frame.width
         webView.frame.size.height = view.frame.height
-
+        
         progressView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(webView)
         webView.addSubview(progressView)

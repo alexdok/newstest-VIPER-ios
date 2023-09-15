@@ -12,7 +12,7 @@ protocol DetailViewProtocol: AnyObject {
 }
 
 final class DetailViewController: UIViewController {
-    // MARK: - Public
+
     var presenter: DetailPresenterProtocol?
     
     var urlToFullNews: String?
@@ -33,6 +33,11 @@ final class DetailViewController: UIViewController {
         presenter?.viewDidLoaded()
     }
     
+    @objc func buttonTapped() {
+        animationTapt()
+        presenter?.didTapButtonToFullNews()
+    }
+    
     deinit {
         print("---------------------------Detail controller was DEINITED--------------------------------")
     }
@@ -43,11 +48,6 @@ private extension DetailViewController {
     func initialize() {
         setupConstraints()
         setupButton()
-    }
-    
-    @objc func buttonTapped() {
-        animationTapt()
-        presenter?.didTapButtonToFullNews()
     }
     
     private func animationTapt() {
