@@ -22,7 +22,7 @@ final class MainPresenter {
     let router: MainRouterProtocol
     let interactor: MainInteractorProtocol
     var canNewLoad = true
-    var theme = "football"
+    var theme = "nhl"
     var page = 1
     
     init(interactor: MainInteractorProtocol, router: MainRouterProtocol) {
@@ -53,14 +53,14 @@ extension MainPresenter: MainPresenterProtocol {
         } else { return }
     }
     
-    func needMoreCells() {
+    internal func needMoreCells() {
         testConnect()
         page += 1
     print(page)
         interactor.getNews(theme: theme, page: page)
     }
     
-    func loadFirstsViews() {
+    internal func loadFirstsViews() {
         testConnect()
         page = 1
         print(page)

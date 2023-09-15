@@ -11,7 +11,7 @@ protocol RequestBuilder {
     func createRequestFrom(url: String, params: [String: String]) -> URLRequest?
 }
 
-class RequestBuilderImpl: RequestBuilder {
+final class RequestBuilderImpl: RequestBuilder {
     func createRequestFrom(url: String, params: [String: String]) -> URLRequest? {
 
         guard var url = URL(string: url) else { return nil }

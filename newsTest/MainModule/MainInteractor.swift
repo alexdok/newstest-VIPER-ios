@@ -21,7 +21,7 @@ final class MainInteractor: MainInteractorProtocol {
     private let network: NetworkManager
     private let networStatuskMonitor = NetworkMonitor.shared
     private var arrayNewsForView: [NewsForView] = []
-    var news = [ObjectNewsData?]()
+    var news:[ObjectNewsData?] = [] 
     var arrayTitles = [String]()
     var arrayImages = [UIImage]()
     
@@ -30,7 +30,7 @@ final class MainInteractor: MainInteractorProtocol {
         self.network = network
     }
     
-    func checkInternetConnection() -> Bool{
+   internal func checkInternetConnection() -> Bool{
         return networStatuskMonitor.isReachable
     }
     
@@ -47,18 +47,18 @@ final class MainInteractor: MainInteractorProtocol {
         }
     }
     
-    func reload() {
+   internal func reload() {
         clearImagesAndTitles()
         arrayNewsForView.removeAll()
         news.removeAll()
     }
     
-    func clearImagesAndTitles() {
+   private func clearImagesAndTitles() {
         arrayImages.removeAll()
         arrayTitles.removeAll()
     }
     
-    func getImgesAndTitles() {
+   private func getImgesAndTitles() {
         clearImagesAndTitles()
         let dispatchGroup = DispatchGroup()
         arrayNewsForView.forEach { news in

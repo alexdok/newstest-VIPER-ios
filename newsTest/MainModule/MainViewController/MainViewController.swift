@@ -18,11 +18,11 @@ final class MainViewController: UIViewController {
     // MARK: - Public
     var presenter: MainPresenterProtocol?
     let tableNews = UITableView()
-    let refreshControl = UIRefreshControl()
+    private let refreshControler = UIRefreshControl()
     let searchBar = UISearchBar()
     var canGiveNewCells = false
     var bottomConstraint: NSLayoutConstraint?
-    let alertBuilder = AlertBuilderImpl()
+    private let alertBuilder = AlertBuilderImpl()
     var cellsNewsForTable: [MainTableViewCellViewModel] = []
     var indicator = ActivityIndicator()
     
@@ -46,9 +46,9 @@ final class MainViewController: UIViewController {
     }
     
     private func setupRefreshController() {
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
-        tableNews.addSubview(refreshControl)
+        refreshControler.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControler.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        tableNews.addSubview(refreshControler)
     }
     
     private func configureVC() {
@@ -65,8 +65,8 @@ final class MainViewController: UIViewController {
         tableNews.reloadData()
     }
     
-    func finishActivityIndicator() {
-        refreshControl.endRefreshing()
+    internal func finishActivityIndicator() {
+        refreshControler.endRefreshing()
     }
 }
 
@@ -81,13 +81,13 @@ private extension MainViewController {
 // MARK: - MainViewProtocol
 extension MainViewController: MainViewProtocol {
     
-    func showAlert(text: AlertModel) {
+    internal func showAlert(text: AlertModel) {
        let alert = alertBuilder.createAlert(with: text)
         present(alert, animated: true)
     }
     
     
-    func viewIsReady(images: [UIImage], titles: [String]) {
+   internal func viewIsReady(images: [UIImage], titles: [String]) {
         let cellsModelsForTable = createCellModels(images: images, titles: titles)
         cellsNewsForTable += cellsModelsForTable
         self.navigationItem.title = "Table News"

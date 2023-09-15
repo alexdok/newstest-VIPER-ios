@@ -9,7 +9,7 @@ import UIKit
 
 extension MainViewController: UISearchBarDelegate {
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         cellsNewsForTable.removeAll()
         presenter?.theme = searchBar.searchTextField.text ?? "main"
@@ -35,7 +35,7 @@ extension MainViewController: UISearchBarDelegate {
         }
     }
     
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    private func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         view.endEditing(true)
         bottomConstraint?.constant = 0
         UIView.animate(withDuration: Constants.standartDurationAnimation) {

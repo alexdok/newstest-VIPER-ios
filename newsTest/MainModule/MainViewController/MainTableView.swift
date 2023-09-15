@@ -31,8 +31,8 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         tableNews.reloadData()
     }
     
-    func needMoreCells(indexPath: IndexPath) {
-        if indexPath.row > cellsNewsForTable.count - 10 {
+  private func needMoreCells(indexPath: IndexPath) {
+        if indexPath.row == cellsNewsForTable.count - 10 {
             canGiveNewCells = true
             print(canGiveNewCells)
         }

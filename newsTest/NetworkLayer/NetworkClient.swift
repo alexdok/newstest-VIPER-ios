@@ -29,7 +29,7 @@ final class NetworkManagerImpl: NetworkManager {
         self.requestBilder = requestBilder
     }
     
-    func sendRequestForNews( theme: String, page: Int, completion: @escaping ([ObjectNewsData?]) -> Void) {
+    internal func sendRequestForNews( theme: String, page: Int, completion: @escaping ([ObjectNewsData?]) -> Void) {
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
         let URLParams = createParamsForRequest(theme: theme, keyAPI: Constants.apiKey, page: page)
@@ -48,7 +48,7 @@ final class NetworkManagerImpl: NetworkManager {
                     }
                     completion(objectNewsFinish)
                 } catch {
-                    print(error)
+                    print(error.localizedDescription)
                     let obj: [ObjectNewsData?] = [nil]
                     completion(obj)
                 }
@@ -58,7 +58,7 @@ final class NetworkManagerImpl: NetworkManager {
         session.finishTasksAndInvalidate()
     }
     
-    func loadImage(urlForImage: String, completion: @escaping (UIImage) -> Void) {
+    internal func loadImage(urlForImage: String, completion: @escaping (UIImage) -> Void) {
         if let image = cacheDataSource.object(forKey: urlForImage as AnyObject) {
             // Изображение найдено в кэше
             completion(image)
@@ -102,14 +102,14 @@ final class NetworkManagerImpl: NetworkManager {
     }
 
 
-    func compressAndCacheImage(_ image: UIImage, forKey key: String) {
-        let compressedImage = image.jpegData(compressionQuality: 0.5)
+   private func compressAndCacheImage(_ image: UIImage, forKey key: String) {
+        let compressedImage = image.jpegData(compressionQuality: 0.0)
         
         if let data = compressedImage, let compressedImage = UIImage(data: data) {
             cacheDataSource.setObject(compressedImage, forKey: key as AnyObject)
         }
     }
-//will need fix!!!!!
+
     private func createParamsForRequest(theme: String, keyAPI: String, page: Int) -> [String: String] {
         let pageToString = String(page)
         let dateForNewsToday = convertCurrentDateToString(day: .today)
@@ -162,7 +162,7 @@ private extension NetworkManagerImpl {
     }
 }
 
-class FakeNetworkManager: NetworkManager {
+final class FakeNetworkManager: NetworkManager {
     func sendRequestForNews(theme: String, page: Int, completion: @escaping ([ObjectNewsData?]) -> Void) {
         completion([nil])
     }
