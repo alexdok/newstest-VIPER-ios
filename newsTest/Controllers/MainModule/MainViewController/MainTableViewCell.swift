@@ -48,16 +48,16 @@ final class MainTableViewCell: UITableViewCell {
         linkCountLabel.text = nil
     }
     
-   private func dropShadow() {
-        layer.masksToBounds = false
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.5
-        layer.shadowOffset = CGSize(width: 0, height: 10)
-        layer.shadowRadius = 10
-        
-        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
-        layer.shouldRasterize = true
-    }
+//    private func dropShadow(view: UIView) {
+//        view.layer.masksToBounds = false
+//        view.layer.shadowColor = UIColor.black.cgColor
+//        view.layer.shadowOpacity = 0.5
+//        view.layer.shadowOffset = CGSize(width: 0, height: 10)
+//        view.layer.shadowRadius = 10
+//        
+//        view.layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+//        view.layer.shouldRasterize = true
+//    }
 
    private func setupImageCell(image: UIImage) {
         self.imageCell.image = image
