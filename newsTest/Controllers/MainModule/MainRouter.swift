@@ -1,6 +1,6 @@
 //
 //  MainRouter.swift
-//  Super easy dev
+//  newsTest
 //
 //  Created by алексей ганзицкий on 30.08.2023
 //
@@ -14,8 +14,6 @@ final class MainRouter: MainRouterProtocol {
     weak var viewController: MainViewController?
     func openDetailController(image: UIImage, news: ObjectNewsData) {
         let vc = DetailModuleBuilder.build(image: image, news: news)
-      
         viewController?.navigationController?.pushViewController(vc, animated: true)
-        
     }
 }

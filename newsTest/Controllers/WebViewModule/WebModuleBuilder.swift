@@ -1,6 +1,6 @@
 //
 //  WebModuleBuilder.swift
-//  Super easy dev
+//  newsTest
 //
 //  Created by алексей ганзицкий on 31.08.2023
 //
