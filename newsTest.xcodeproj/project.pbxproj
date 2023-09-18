@@ -32,7 +32,7 @@
 		90C4CE8C2A9F209700F53C57 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CE872A9F209700F53C57 /* MainInteractor.swift */; };
 		90C4CE8E2A9F25CB00F53C57 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CE8D2A9F25CB00F53C57 /* MainTableViewCell.swift */; };
 		90C4CE9B2A9F314F00F53C57 /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CE9A2A9F314F00F53C57 /* AlertBuilder.swift */; };
-		90C4CE9E2A9F376500F53C57 /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CE9D2A9F376500F53C57 /* MainTableView.swift */; };
+		90C4CE9E2A9F376500F53C57 /* MainViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CE9D2A9F376500F53C57 /* MainViewController+extension.swift */; };
 		90C4CEA02A9F37C800F53C57 /* MainSerchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CE9F2A9F37C800F53C57 /* MainSerchBar.swift */; };
 		90C4CEA22A9F3B3900F53C57 /* NetworkMonitorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CEA12A9F3B3900F53C57 /* NetworkMonitorManager.swift */; };
 		90C4CEA42A9F3B9E00F53C57 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CEA32A9F3B9E00F53C57 /* NetworkClient.swift */; };
@@ -76,7 +76,7 @@
 		90C4CE872A9F209700F53C57 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		90C4CE8D2A9F25CB00F53C57 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		90C4CE9A2A9F314F00F53C57 /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
-		90C4CE9D2A9F376500F53C57 /* MainTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableView.swift; sourceTree = "<group>"; };
+		90C4CE9D2A9F376500F53C57 /* MainViewController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+extension.swift"; sourceTree = "<group>"; };
 		90C4CE9F2A9F37C800F53C57 /* MainSerchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSerchBar.swift; sourceTree = "<group>"; };
 		90C4CEA12A9F3B3900F53C57 /* NetworkMonitorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorManager.swift; sourceTree = "<group>"; };
 		90C4CEA32A9F3B9E00F53C57 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
@@ -213,7 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				90C4CE862A9F209700F53C57 /* MainViewController.swift */,
-				90C4CE9D2A9F376500F53C57 /* MainTableView.swift */,
+				90C4CE9D2A9F376500F53C57 /* MainViewController+extension.swift */,
 				90C4CE8D2A9F25CB00F53C57 /* MainTableViewCell.swift */,
 				907682E62AA089510051F0BB /* MainTableViewCellViewModel.swift */,
 				90C4CE9F2A9F37C800F53C57 /* MainSerchBar.swift */,
@@ -353,7 +353,7 @@
 				90C7A8FC2AAF16B500E1327C /* Constants.swift in Sources */,
 				90C4CEA02A9F37C800F53C57 /* MainSerchBar.swift in Sources */,
 				907682E32AA083CF0051F0BB /* DetailRouter.swift in Sources */,
-				90C4CE9E2A9F376500F53C57 /* MainTableView.swift in Sources */,
+				90C4CE9E2A9F376500F53C57 /* MainViewController+extension.swift in Sources */,
 				907682F22AA0D9E10051F0BB /* WebPresenter.swift in Sources */,
 				907682E22AA083CF0051F0BB /* DetailModuleBuilder.swift in Sources */,
 				90C4CE9B2A9F314F00F53C57 /* AlertBuilder.swift in Sources */,

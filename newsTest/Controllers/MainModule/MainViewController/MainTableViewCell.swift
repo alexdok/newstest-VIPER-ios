@@ -59,7 +59,6 @@ final class MainTableViewCell: UITableViewCell {
         layer.shouldRasterize = true
     }
 
-    
    private func setupImageCell(image: UIImage) {
         self.imageCell.image = image
     }

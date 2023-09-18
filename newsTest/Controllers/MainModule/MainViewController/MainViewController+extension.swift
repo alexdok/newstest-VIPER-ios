@@ -24,10 +24,10 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-         cellsNewsForTable[indexPath.row].count += 1
-        let counter = cellsNewsForTable[indexPath.row].count
-        SaveManagerImpl.shared.save(cellsNewsForTable[indexPath.row].title, count: counter)
-        presenter?.didNewsTapt(title: cellsNewsForTable[indexPath.row].title, image: cellsNewsForTable[indexPath.row].image)
+        cellsNewsForTable[indexPath.row].count += 1
+        let count = cellsNewsForTable[indexPath.row].count
+        SaveManagerImpl.shared.save(cellsNewsForTable[indexPath.row].title, count: count)
+        presenter?.didTapNews(title: cellsNewsForTable[indexPath.row].title, image: cellsNewsForTable[indexPath.row].image)
         tableNews.reloadData()
     }
     

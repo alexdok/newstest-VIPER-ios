@@ -34,7 +34,7 @@ final class MainInteractor: MainInteractorProtocol {
         return networStatuskMonitor.isReachable
     }
     
-    func getNews(theme: String, page: Int) {
+    internal func getNews(theme: String, page: Int) {
         arrayNewsForView.removeAll()
         network.sendRequestForNews(theme: theme, page: page) { [weak self] objectNews in
             self?.news.append(contentsOf: objectNews) 
@@ -63,7 +63,6 @@ final class MainInteractor: MainInteractorProtocol {
         let dispatchGroup = DispatchGroup()
         arrayNewsForView.forEach { news in
             dispatchGroup.enter()
-            guard news != nil else { return }
             network.loadImage(urlForImage: news.urlImage) { image in
                 self.arrayTitles.append(news.title)
                 self.arrayImages.append(image)

@@ -11,7 +11,7 @@ protocol MainPresenterProtocol: AnyObject {
     func loadFirstsViews()
     func needMoreCells() 
     func getValuesForView(images: [UIImage], titles:[String])
-    func didNewsTapt(title: String, image: UIImage)
+    func didTapNews(title: String, image: UIImage)
     var theme: String { get set }
     var page: Int { get set }
     var canNewLoad: Bool { get set }
@@ -33,7 +33,7 @@ final class MainPresenter {
 
 extension MainPresenter: MainPresenterProtocol {
     
-    func didNewsTapt(title: String, image: UIImage) {
+    func didTapNews(title: String, image: UIImage) {
        let news = interactor.news.first { objectNews in
            objectNews?.title == title
         }
@@ -56,13 +56,11 @@ extension MainPresenter: MainPresenterProtocol {
     internal func needMoreCells() {
         testConnect()
         page += 1
-    print(page)
         interactor.getNews(theme: theme, page: page)
     }
     
     internal func loadFirstsViews() {
         testConnect()
-        page = 1
         print(page)
         interactor.reload()
         interactor.getNews(theme: theme, page: page)

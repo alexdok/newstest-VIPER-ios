@@ -9,5 +9,5 @@ import Foundation
 
 enum Constants {
     static let standartDurationAnimation = 0.3
-    static let  tableNewsRowHeight = 150
+    static let tableNewsRowHeight = 150
 }
