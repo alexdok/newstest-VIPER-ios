@@ -112,8 +112,8 @@ final class NetworkManagerImpl: NetworkManager {
     
     private func createParamsForRequest(theme: String, keyAPI: String, page: Int) -> [String: String] {
         let pageToString = String(page)
-        let dateForNewsToday = convertCurrentDateToString(day: .today)
-        let dateForNewsYesterday = convertCurrentDateToString(day: .yesterday)
+        let dateForNewsToday = convertDateToString(day: .today)
+        let dateForNewsYesterday = convertDateToString(day: .yesterday)
         
         let URLParams = [
             "q": theme,
@@ -135,7 +135,7 @@ private enum Days {
     case yesterday
 }
 // доработать работу с месяццами
-private func convertCurrentDateToString(day: Days) -> String {
+private func convertDateToString(day: Days) -> String {
     let date = NSDate()
     let formatter = DateFormatter()
     formatter.dateFormat = "dd"
