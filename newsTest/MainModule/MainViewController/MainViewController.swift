@@ -92,11 +92,6 @@ extension MainViewController: MainViewProtocol {
         self.navigationItem.title = "Table News"
         self.indicator.hideLoading()
         self.tableNews.reloadData()
-       getOnTOp()
-    }
-
-    private func getOnTOp() {
-        tableNews.scrollToRow(at: IndexPath(row: 1, section: 0), at: .top, animated: true)
     }
     
     private func createCellModels(images: [UIImage], titles: [String]) -> [MainTableViewCellViewModel] {

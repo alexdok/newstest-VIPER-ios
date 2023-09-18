@@ -63,6 +63,7 @@ final class MainInteractor: MainInteractorProtocol {
         let dispatchGroup = DispatchGroup()
         arrayNewsForView.forEach { news in
             dispatchGroup.enter()
+            guard news != nil else { return }
             network.loadImage(urlForImage: news.urlImage) { image in
                 self.arrayTitles.append(news.title)
                 self.arrayImages.append(image)
