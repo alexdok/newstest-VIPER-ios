@@ -139,6 +139,16 @@
 			path = WebViewModule;
 			sourceTree = "<group>";
 		};
+		90A13F492AB8327C0090E597 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				907682DB2AA083CF0051F0BB /* DetailModule */,
+				90C4CE782A9F202E00F53C57 /* MainModule */,
+				907682E82AA0D3E50051F0BB /* WebViewModule */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		90C4CE562A9F1EF500F53C57 = {
 			isa = PBXGroup;
 			children = (
@@ -159,11 +169,9 @@
 			isa = PBXGroup;
 			children = (
 				90C4CE772A9F201E00F53C57 /* Applications */,
+				90A13F492AB8327C0090E597 /* Controllers */,
 				90C7A8FD2AAF5FF000E1327C /* SupportingFiles */,
 				907682DA2AA0700E0051F0BB /* NetworkLayer */,
-				90C4CE782A9F202E00F53C57 /* MainModule */,
-				907682DB2AA083CF0051F0BB /* DetailModule */,
-				907682E82AA0D3E50051F0BB /* WebViewModule */,
 				90C4CE762A9F1F6400F53C57 /* Resources */,
 			);
 			path = newsTest;
