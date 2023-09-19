@@ -33,7 +33,7 @@ final class MainPresenter {
 extension MainPresenter: MainPresenterProtocol {
     
     func didTapNews(title: String, image: UIImage) {
-       let news = interactor.news.first { objectNews in
+        let news = interactor.storage.news.first { objectNews in
            objectNews?.title == title
         }
         guard let news = news else { return }

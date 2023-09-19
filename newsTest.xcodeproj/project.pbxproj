@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		904B11722AB9C35A00AE4668 /* StorageNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904B11712AB9C35A00AE4668 /* StorageNews.swift */; };
 		907682E12AA083CF0051F0BB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907682DD2AA083CF0051F0BB /* DetailViewController.swift */; };
 		907682E22AA083CF0051F0BB /* DetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907682DC2AA083CF0051F0BB /* DetailModuleBuilder.swift */; };
 		907682E32AA083CF0051F0BB /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907682DE2AA083CF0051F0BB /* DetailRouter.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		904B11712AB9C35A00AE4668 /* StorageNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageNews.swift; sourceTree = "<group>"; };
 		907682DC2AA083CF0051F0BB /* DetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModuleBuilder.swift; sourceTree = "<group>"; };
 		907682DD2AA083CF0051F0BB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		907682DE2AA083CF0051F0BB /* DetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
@@ -200,8 +202,9 @@
 				90C4CE9C2A9F373700F53C57 /* MainViewController */,
 				90C4CEBA2A9F6EC700F53C57 /* helper */,
 				90C4CE842A9F209700F53C57 /* MainPresenter.swift */,
-				90C4CE872A9F209700F53C57 /* MainInteractor.swift */,
 				90C4CE852A9F209700F53C57 /* MainRouter.swift */,
+				90C4CE872A9F209700F53C57 /* MainInteractor.swift */,
+				904B11712AB9C35A00AE4668 /* StorageNews.swift */,
 				90C4CE832A9F209700F53C57 /* MainModuleBuilder.swift */,
 			);
 			path = MainModule;
@@ -352,6 +355,7 @@
 				90C4CE9E2A9F376500F53C57 /* MainViewController+extension.swift in Sources */,
 				907682F22AA0D9E10051F0BB /* WebPresenter.swift in Sources */,
 				907682E22AA083CF0051F0BB /* DetailModuleBuilder.swift in Sources */,
+				904B11722AB9C35A00AE4668 /* StorageNews.swift in Sources */,
 				90C4CE9B2A9F314F00F53C57 /* AlertBuilder.swift in Sources */,
 				90C4CEA22A9F3B3900F53C57 /* NetworkMonitorManager.swift in Sources */,
 				907682F42AA0D9E10051F0BB /* WebInteractor.swift in Sources */,
