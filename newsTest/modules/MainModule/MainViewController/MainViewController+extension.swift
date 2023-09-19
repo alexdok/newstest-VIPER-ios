@@ -23,7 +23,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         cellsNewsForTable[indexPath.row].count += 1
         let count = cellsNewsForTable[indexPath.row].count
-        SaveManagerImpl.shared.save(cellsNewsForTable[indexPath.row].title, count: count)
+        LocalStorageManager.shared.save(cellsNewsForTable[indexPath.row].title, count: count)
         presenter?.didTapNews(title: cellsNewsForTable[indexPath.row].title, image: cellsNewsForTable[indexPath.row].image)
         tableNews.reloadData()
     }
@@ -45,6 +45,17 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         tableNews.dataSource = self
         tableNews.delegate = self
         tableNews.register(MainTableViewCell.self)
+    }
+}
+
+extension MainViewController: UISearchBarDelegate {
+    internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        cellsNewsForTable.removeAll()
+        presenter?.theme = searchBar.searchTextField.text ?? "main"
+        presenter?.loadFirstsViews()
+        indicator.showLoading(onView: view)
+        searchBar.searchTextField.text = nil
     }
 }
 
@@ -72,3 +83,4 @@ extension MainViewController {
         ])
     }
 }
+

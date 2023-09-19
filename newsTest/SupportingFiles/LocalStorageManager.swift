@@ -14,8 +14,8 @@ protocol SaveManager {
     func loadSettingsList(titleForNews: String) -> [String?]
 }
 
-class SaveManagerImpl: SaveManager {
-    static let shared = SaveManagerImpl()
+class LocalStorageManager: SaveManager {
+    static let shared = LocalStorageManager()
     private init() {}
     
     func save(_ title: String, count: Int) {

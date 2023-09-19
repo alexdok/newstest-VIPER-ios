@@ -62,7 +62,6 @@ final class MainViewController: UIViewController {
 
 // MARK: - Private functions
 private extension MainViewController {
-
     private func setupRefreshController() {
         refreshControler.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControler.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
@@ -110,7 +109,32 @@ extension MainViewController: MainViewProtocol {
     }
     
     private func createTableViewModel(image: UIImage, title: String) -> MainTableViewCellViewModel {
-        let model = MainTableViewCellViewModel(title: title, image: image, count: SaveManagerImpl.shared.loadCount(title))
+        let model = MainTableViewCellViewModel(title: title, image: image, count: LocalStorageManager.shared.loadCount(title))
         return model
+    }
+    
+    @objc func keyboardWillShow(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+        let keyboardHeight = keyboardFrame.height
+        bottomConstraint?.constant = -keyboardHeight
+        UIView.animate(withDuration: Constants.standartDurationAnimation) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: Notification) {
+        bottomConstraint?.constant = 0
+        UIView.animate(withDuration: Constants.standartDurationAnimation) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+        bottomConstraint?.constant = 0
+        UIView.animate(withDuration: Constants.standartDurationAnimation) {
+            self.view.layoutIfNeeded()
+        }
     }
 }
