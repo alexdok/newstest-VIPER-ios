@@ -18,7 +18,7 @@ final class ActivityIndicator: UIView {
         let ai = UIActivityIndicatorView(style: .large)
         ai.startAnimating()
         ai.center = spinnerView.center
-        DispatchQueue.main.async {
+        onMain {
             spinnerView.addSubview(ai)
             onView.addSubview(spinnerView)
             spinnerView.center = onView.center
@@ -27,7 +27,7 @@ final class ActivityIndicator: UIView {
     }
     
     func hideLoading() {
-        DispatchQueue.main.async {
+       onMain {
             self.spinner?.removeFromSuperview()
             self.spinner = nil
         }

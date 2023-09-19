@@ -14,12 +14,9 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath) as MainTableViewCell
-        cell.titleLabel.text = cellsNewsForTable[indexPath.row].title
-        cell.imageCell.image = cellsNewsForTable[indexPath.row].image
-        cell.linkCountLabel.text =  String(cellsNewsForTable[indexPath.row].count)
-        cell.imageCell.backgroundColor = .green
+        cell.setupValuesCell(values: cellsNewsForTable[indexPath.row])
         needMoreCells(indexPath: indexPath)
-            return cell
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

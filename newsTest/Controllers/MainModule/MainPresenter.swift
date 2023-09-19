@@ -60,7 +60,7 @@ extension MainPresenter: MainPresenterProtocol {
     internal func loadFirstsViews() {
         testConnect()
         print(page)
-        interactor.reload()
+        interactor.clearAll()
         interactor.getNews(theme: theme, page: page)
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 protocol MainInteractorProtocol: AnyObject {
     func getNews(theme: String, page: Int)
-    func reload()
+    func clearAll()
     func checkInternetConnection() -> Bool
     var arrayTitles: [String] { get }
     var arrayImages: [UIImage] { get }
@@ -22,8 +22,8 @@ final class MainInteractor: MainInteractorProtocol {
     private let networStatuskMonitor = NetworkMonitor.shared
     private var arrayNewsForView: [NewsForView] = []
     var news:[ObjectNewsData?] = [] 
-    var arrayTitles = [String]()
-    var arrayImages = [UIImage]()
+    lazy var arrayTitles = [String]()
+    lazy var arrayImages = [UIImage]()
     
     init(presenter: MainPresenterProtocol? = nil, network: NetworkManager) {
         self.presenter = presenter
@@ -47,7 +47,7 @@ final class MainInteractor: MainInteractorProtocol {
         }
     }
     
-   internal func reload() {
+   internal func clearAll() {
         clearImagesAndTitles()
         arrayNewsForView.removeAll()
         news.removeAll()

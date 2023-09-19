@@ -42,8 +42,8 @@ final class NetworkManagerImpl: NetworkManager {
                     let objectNews = self.mapper.map(news)
                     var objectNewsFinish = [ObjectNewsData]()
                     for news in objectNews {
-                        if news?.title != nil {
-                            objectNewsFinish.append(news ?? ObjectNewsData())
+                        if news.title != nil {
+                            objectNewsFinish.append(news)
                         }
                     }
                     completion(objectNewsFinish)

@@ -8,11 +8,11 @@
 import Foundation
 
 protocol MapNewsToObject {
-    func map(_ news: News) -> [ObjectNewsData?]
+    func map(_ news: News) -> [ObjectNewsData]
 }
 
 struct MapNewsToObjectImpl: MapNewsToObject {
-    func map(_ news: News) -> [ObjectNewsData?] {
+    func map(_ news: News) -> [ObjectNewsData] {
         var newObjectNewsAraay: [ObjectNewsData] = []
         for items in news.articles {
             let objectNews = ObjectNewsData(author: items.author,

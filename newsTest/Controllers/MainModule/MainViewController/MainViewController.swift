@@ -29,9 +29,13 @@ final class MainViewController: UIViewController {
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialize()
+        setupRefreshController()
+        configureVC()
+        createTableNews()
+        configureTableNews()
+        
         presenter?.loadFirstsViews()
-        indicator.showLoading(onView: tableNews)
+        indicator.showLoading(onView: view)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,11 +62,7 @@ final class MainViewController: UIViewController {
 
 // MARK: - Private functions
 private extension MainViewController {
-    func initialize() {
-        setupRefreshController()
-        configureVC()
-    }
-    
+
     private func setupRefreshController() {
         refreshControler.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControler.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
@@ -73,8 +73,6 @@ private extension MainViewController {
         view.backgroundColor = .white
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = "Loading....."
-        createTableNews()
-        configureTableNews()
     }
 }
 

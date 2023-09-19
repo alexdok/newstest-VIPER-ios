@@ -14,7 +14,7 @@ extension MainViewController: UISearchBarDelegate {
         cellsNewsForTable.removeAll()
         presenter?.theme = searchBar.searchTextField.text ?? "main"
         presenter?.loadFirstsViews()
-        indicator.showLoading(onView: tableNews)
+        indicator.showLoading(onView: view)
         searchBar.searchTextField.text = nil
     }
     

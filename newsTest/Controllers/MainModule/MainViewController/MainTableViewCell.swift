@@ -35,7 +35,7 @@ final class MainTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupViewCell()
+        setupConstraaints()
     }
     required init?(coder: NSCoder) {
         fatalError("init has not been implemented")
@@ -48,7 +48,13 @@ final class MainTableViewCell: UITableViewCell {
         linkCountLabel.text = nil
     }
     
-   private func setupViewCell() {
+    func setupValuesCell(values: MainTableViewCellViewModel) {
+        imageCell.image = values.image
+        titleLabel.text = values.title
+        linkCountLabel.text = String(values.count)
+    }
+    
+   private func setupConstraaints() {
         [imageCell, titleLabel, linkCountLabel].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview($0)

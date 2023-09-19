@@ -34,7 +34,7 @@ final class DetailViewController: UIViewController {
     }
     
     @objc func buttonTapped() {
-        animationTapt()
+        animationTap()
         presenter?.didTapButtonToFullNews()
     }
     
@@ -50,7 +50,7 @@ private extension DetailViewController {
         setupButton()
     }
     
-    private func animationTapt() {
+    private func animationTap() {
         UIView.animate(withDuration: 0.3) {
             self.button.backgroundColor = .green
         } completion: { _ in
