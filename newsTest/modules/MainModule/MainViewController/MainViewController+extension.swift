@@ -37,14 +37,6 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
           presenter?.needMoreCells()
       default: break
       }
-//        if indexPath.row == cellsNewsForTable.count - 10 {
-//            canGiveNewCells = true
-//        }
-//        if indexPath.row > cellsNewsForTable.count - 2 && canGiveNewCells {
-//            canGiveNewCells.toggle()
-//            print(canGiveNewCells)
-//            presenter?.needMoreCells()
-//        }
     }
     
     func configureTableNews() {
