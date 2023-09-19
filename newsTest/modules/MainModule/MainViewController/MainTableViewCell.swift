@@ -11,7 +11,7 @@ final class MainTableViewCell: UITableViewCell {
     
     let imageCell: UIImageView = {
         let imageView = UIImageView()
-        imageView.layer.cornerRadius = 20
+        imageView.layer.cornerRadius = Constants.imageViewCornerRadius
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -60,17 +60,17 @@ final class MainTableViewCell: UITableViewCell {
             contentView.addSubview($0)
         }
         NSLayoutConstraint.activate([
-            imageCell.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            imageCell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            imageCell.widthAnchor.constraint(equalToConstant: 150),
-            imageCell.heightAnchor.constraint(equalToConstant: 110),
+            imageCell.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.cellItemsPadding),
+            imageCell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.cellItemsPadding),
+            imageCell.widthAnchor.constraint(equalToConstant: Constants.imageCellWidth),
+            imageCell.heightAnchor.constraint(equalToConstant: Constants.imageCellHeight),
             
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            titleLabel.leadingAnchor.constraint(equalTo: imageCell.trailingAnchor, constant: 20),
-            titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.cellItemsPadding),
+            titleLabel.leadingAnchor.constraint(equalTo: imageCell.trailingAnchor, constant: Constants.cellItemsPadding),
+            titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -Constants.cellItemsPadding),
   
-            linkCountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            linkCountLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
+            linkCountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.cellItemsPadding),
+            linkCountLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.cellItemsPadding)
         ])
     }
 }

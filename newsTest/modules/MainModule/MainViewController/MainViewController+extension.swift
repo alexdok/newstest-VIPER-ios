@@ -75,7 +75,7 @@ extension MainViewController {
         
         NSLayoutConstraint.activate([
             tableNews.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableNews.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
+            tableNews.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: Constants.tableViewBottomPadding),
             tableNews.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableNews.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),

@@ -21,7 +21,7 @@ final class MainViewController: UIViewController {
     let tableNews = UITableView()
     private let refreshControler = UIRefreshControl()
     private let alertBuilder = AlertBuilderImpl()
-    var canGiveNewCells = false
+    lazy var canGiveNewCells = false
     var bottomConstraint: NSLayoutConstraint?
     var cellsNewsForTable: [MainTableViewCellViewModel] = []
     var indicator = ActivityIndicator()
@@ -58,6 +58,14 @@ final class MainViewController: UIViewController {
     internal func finishActivityIndicator() {
         refreshControler.endRefreshing()
     }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+       view.endEditing(true)
+       bottomConstraint?.constant = 0
+        UIView.animate(withDuration: Constants.standartDurationAnimation) {
+            self.view.layoutIfNeeded()
+        }
+   }
 }
 
 // MARK: - Private functions
@@ -73,6 +81,23 @@ private extension MainViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = "Loading....."
     }
+    
+    @objc private func keyboardWillShow(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+        let keyboardHeight = keyboardFrame.height
+        bottomConstraint?.constant = -keyboardHeight
+        UIView.animate(withDuration: Constants.standartDurationAnimation) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc private func keyboardWillHide(notification: Notification) {
+        bottomConstraint?.constant = 0
+        UIView.animate(withDuration: Constants.standartDurationAnimation) {
+            self.view.layoutIfNeeded()
+        }
+    }
 }
 
 // MARK: - MainViewProtocol
@@ -83,58 +108,12 @@ extension MainViewController: MainViewProtocol {
         present(alert, animated: true)
     }
     
-   internal func viewIsReady(images: [UIImage], titles: [String]) {
-        let cellsModelsForTable = createCellModels(images: images, titles: titles)
+    func viewIsReady(images: [UIImage], titles: [String]) {
+       guard let presenter = presenter else { return }
+       let cellsModelsForTable = presenter.createCellModels(images: images, titles: titles)
         cellsNewsForTable += cellsModelsForTable
         self.navigationItem.title = "Table News"
         self.indicator.hideLoading()
         self.tableNews.reloadData()
-    }
-    
-    private func createCellModels(images: [UIImage], titles: [String]) -> [MainTableViewCellViewModel] {
-        var arrayModelsForCells:[MainTableViewCellViewModel] = []
-        onMain {
-            var imageCount = 0
-            for title in titles {
-                var image = UIImage(named: "noImage")!
-                if imageCount < images.count {
-                    image = images[imageCount]
-                }
-                let cellModel = self.createTableViewModel(image: image, title: title)
-                imageCount += 1
-                arrayModelsForCells.append(cellModel)
-            }
-        }
-        return arrayModelsForCells
-    }
-    
-    private func createTableViewModel(image: UIImage, title: String) -> MainTableViewCellViewModel {
-        let model = MainTableViewCellViewModel(title: title, image: image, count: LocalStorageManager.shared.loadCount(title))
-        return model
-    }
-    
-    @objc func keyboardWillShow(notification: Notification) {
-        guard let userInfo = notification.userInfo,
-              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
-        let keyboardHeight = keyboardFrame.height
-        bottomConstraint?.constant = -keyboardHeight
-        UIView.animate(withDuration: Constants.standartDurationAnimation) {
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    @objc func keyboardWillHide(notification: Notification) {
-        bottomConstraint?.constant = 0
-        UIView.animate(withDuration: Constants.standartDurationAnimation) {
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        view.endEditing(true)
-        bottomConstraint?.constant = 0
-        UIView.animate(withDuration: Constants.standartDurationAnimation) {
-            self.view.layoutIfNeeded()
-        }
     }
 }

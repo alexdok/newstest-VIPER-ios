@@ -12,6 +12,7 @@ protocol MainPresenterProtocol: AnyObject {
     func needMoreCells() 
     func getValuesForView(images: [UIImage], titles:[String])
     func didTapNews(title: String, image: UIImage)
+    func createCellModels(images: [UIImage], titles: [String]) -> [MainTableViewCellViewModel]
     var theme: String { get set }
     var page: Int { get set }
 }
@@ -20,7 +21,7 @@ final class MainPresenter {
     weak var view: MainViewProtocol?
     let router: MainRouterProtocol
     let interactor: MainInteractorProtocol
-    var theme = "nhl"
+    var theme = "sport"
     var page = 1
     
     init(interactor: MainInteractorProtocol, router: MainRouterProtocol) {
@@ -37,6 +38,28 @@ extension MainPresenter: MainPresenterProtocol {
         }
         guard let news = news else { return }
         router.openDetailController(image: image, news: news ?? ObjectNewsData())
+    }
+    
+     func createCellModels(images: [UIImage], titles: [String]) -> [MainTableViewCellViewModel] {
+        var arrayModelsForCells:[MainTableViewCellViewModel] = []
+        onMain {
+            var imageCount = 0
+            for title in titles {
+                var image = UIImage(named: "noImage")!
+                if imageCount < images.count {
+                    image = images[imageCount]
+                }
+                let cellModel = self.createTableViewModel(image: image, title: title)
+                imageCount += 1
+                arrayModelsForCells.append(cellModel)
+            }
+        }
+        return arrayModelsForCells
+    }
+    
+    private func createTableViewModel(image: UIImage, title: String) -> MainTableViewCellViewModel {
+        let model = MainTableViewCellViewModel(title: title, image: image, count: LocalStorageManager.shared.loadCount(title))
+        return model
     }
     
     internal func getValuesForView(images: [UIImage], titles: [String]) {
