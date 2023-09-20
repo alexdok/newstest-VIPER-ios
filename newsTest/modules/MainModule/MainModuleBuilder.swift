@@ -10,7 +10,7 @@ import UIKit
 final class MainModuleBuilder {
     
     static func build() -> MainViewController {
-        let interactor = MainInteractor(network: NetworkManagerImpl(mapper: MapNewsToObjectImpl(), requestBilder: RequestBuilderImpl()), storage: StorageNews())
+        let interactor = MainInteractor(network: NetworkServiceImpl(mapper: MapNewsToObjectImpl(), requestBilder: RequestBuilderImpl()), storage: StorageNews())
         let router = MainRouter()
         let presenter = MainPresenter(interactor: interactor, router: router)
         let viewController = MainViewController()

@@ -16,12 +16,12 @@ protocol MainInteractorProtocol: AnyObject {
 
 final class MainInteractor: MainInteractorProtocol {
     weak var presenter: MainPresenterProtocol?
-    private let network: NetworkManager
+    private let network: NetworkService
     private let networStatuskMonitor = NetworkMonitor.shared
     private lazy var arrayNewsForView: [NewsForView] = []
     var storage: StorageNews
     
-    init(presenter: MainPresenterProtocol? = nil, network: NetworkManager, storage: StorageNews) {
+    init(presenter: MainPresenterProtocol? = nil, network: NetworkService, storage: StorageNews) {
         self.presenter = presenter
         self.network = network
         self.storage = storage

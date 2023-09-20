@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 
-protocol NetworkManager {
+protocol NetworkService {
     func sendRequestForNews( theme: String, page: Int, completion: @escaping ([ObjectNewsData?]) -> Void)
     func loadImage(urlForImage: String, completion: @escaping (UIImage) -> Void)
 }
 
-final class NetworkManagerImpl: NetworkManager {
+final class NetworkServiceImpl: NetworkService {
     
     private let mapper: MapNewsToObject
     private let requestBilder: RequestBuilder
@@ -153,7 +153,7 @@ private func convertDateToString(day: Days) -> String {
     }
 }
 
-private extension NetworkManagerImpl {
+private extension NetworkServiceImpl {
     enum Constants {
         static let url = "https://newsapi.org/v2/everything"
         static let apiKey = "bd4291cebed94b898dd76406d634bac2"
@@ -162,7 +162,7 @@ private extension NetworkManagerImpl {
     }
 }
 
-final class FakeNetworkManager: NetworkManager {
+final class FakeNetworkManager: NetworkService {
     func sendRequestForNews(theme: String, page: Int, completion: @escaping ([ObjectNewsData?]) -> Void) {
         completion([nil])
     }
