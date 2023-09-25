@@ -14,7 +14,6 @@ protocol MainViewProtocol: AnyObject {
 }
 
 final class MainViewController: UIViewController {
-    
     // MARK: - prop
     var presenter: MainPresenterProtocol?
     let searchBar = UISearchBar()

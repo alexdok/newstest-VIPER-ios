@@ -5,7 +5,6 @@
 //  Created by алексей ганзицкий on 30.08.2023.
 //
 
-import Foundation
 import UIKit
 
 protocol NetworkService {
@@ -161,14 +160,4 @@ private extension NetworkServiceImpl {
         //90253efc2978411a9214e198e3374178
     }
 }
-
-final class FakeNetworkManager: NetworkService {
-    func sendRequestForNews(theme: String, page: Int, completion: @escaping ([ObjectNewsData?]) -> Void) {
-        completion([nil])
-    }
-    func loadImage(urlForImage: String, completion: @escaping (UIImage) -> Void) {
-    }
-}
-
-
 

@@ -6,7 +6,7 @@
 //
 import UIKit
 
-struct StorageNews {
+class StorageNews {
     var news:[ObjectNewsData?] = []
     lazy var arrayTitles = [String]()
     lazy var arrayImages = [UIImage]()
