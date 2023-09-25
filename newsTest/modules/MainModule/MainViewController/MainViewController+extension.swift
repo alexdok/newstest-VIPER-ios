@@ -63,24 +63,28 @@ extension MainViewController {
     // setup constraints
     func createTableNews() {
         view.addSubview(tableNews)
-        view.addSubview(searchBar)
-        
         tableNews.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.delegate = self
-        searchBar.placeholder = "Search"
-        
-        bottomConstraint = searchBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        bottomConstraint?.isActive = true
         
         NSLayoutConstraint.activate([
             tableNews.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableNews.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: Constants.tableViewBottomPadding),
             tableNews.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableNews.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
-            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
+    }
+    
+    func setupSearcBar() {
+        searchBar.frame = CGRect(x:0, y:0, width: tableNews.frame.size.width, height:44)
+        
+        searchBar.delegate = self
+        
+        searchBar.barTintColor = UIColor.white
+        searchBar.setBackgroundImage(UIImage.init(), for: UIBarPosition.any, barMetrics: UIBarMetrics.default)
+        
+        searchBar.placeholder = "search"
+        
+        self.tableNews.tableHeaderView = searchBar
+        
     }
 }
 
