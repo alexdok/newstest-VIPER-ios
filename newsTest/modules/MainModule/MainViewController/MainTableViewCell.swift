@@ -9,11 +9,19 @@ import UIKit
 
 final class MainTableViewCell: UITableViewCell {
     
+    let imageBackground: UIView = {
+        let imageBackground = UIView()
+        imageBackground.layer.cornerRadius = Constants.imageViewCornerRadius
+        imageBackground.backgroundColor = .white
+        imageBackground.clipsToBounds = true
+        return imageBackground
+    }()
+    
     let imageCell: UIImageView = {
-        let imageView = UIImageView()
-        imageView.layer.cornerRadius = Constants.imageViewCornerRadius
-        imageView.clipsToBounds = true
-        return imageView
+        let imageCell = UIImageView()
+        imageCell.layer.cornerRadius = Constants.imageViewCornerRadius
+        imageCell.clipsToBounds = true
+        return imageCell
     }()
     
     var titleLabel: UILabel = {
@@ -36,6 +44,8 @@ final class MainTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupConstraaints()
+       
+        createDefaultShadow(for: imageBackground)
     }
     required init?(coder: NSCoder) {
         fatalError("init has not been implemented")
@@ -48,6 +58,16 @@ final class MainTableViewCell: UITableViewCell {
         linkCountLabel.text = nil
     }
     
+    private func createDefaultShadow(for myView: UIView) {
+        myView.layer.shadowColor = UIColor.black.cgColor
+        myView.layer.shadowOffset = CGSize(width: -1, height: 1)
+        myView.layer.shadowOpacity = 1
+        myView.layer.shadowRadius = Constants.imageViewCornerRadius / 3
+        
+        myView.clipsToBounds = false
+        myView.layer.masksToBounds = false
+    }
+    
     func setupValuesCell(values: MainTableViewCellViewModel) {
         imageCell.image = values.image
         titleLabel.text = values.title
@@ -55,18 +75,23 @@ final class MainTableViewCell: UITableViewCell {
     }
     
    private func setupConstraaints() {
-        [imageCell, titleLabel, linkCountLabel].forEach {
+        [imageBackground, imageCell, titleLabel, linkCountLabel].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview($0)
         }
         NSLayoutConstraint.activate([
+            imageBackground.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.cellItemsPadding),
+            imageBackground.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.cellItemsPadding),
+            imageBackground.widthAnchor.constraint(equalToConstant: Constants.imageCellWidth),
+            imageBackground.heightAnchor.constraint(equalToConstant: Constants.imageCellHeight),
+            
             imageCell.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.cellItemsPadding),
             imageCell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.cellItemsPadding),
             imageCell.widthAnchor.constraint(equalToConstant: Constants.imageCellWidth),
             imageCell.heightAnchor.constraint(equalToConstant: Constants.imageCellHeight),
             
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.cellItemsPadding),
-            titleLabel.leadingAnchor.constraint(equalTo: imageCell.trailingAnchor, constant: Constants.cellItemsPadding),
+            titleLabel.leadingAnchor.constraint(equalTo: imageBackground.trailingAnchor, constant: Constants.cellItemsPadding),
             titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -Constants.cellItemsPadding),
   
             linkCountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.cellItemsPadding),
