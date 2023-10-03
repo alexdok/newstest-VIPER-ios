@@ -11,12 +11,11 @@ protocol WebPresenterProtocol: AnyObject {
 
 final class WebPresenter {
     weak var view: WebViewProtocol?
-    let router: WebRouterProtocol
     let interactor: WebInteractorProtocol
 
-    init(interactor: WebInteractorProtocol, router: WebRouterProtocol) {
+    init(interactor: WebInteractorProtocol) {
         self.interactor = interactor
-        self.router = router
+      
     }
     
     func createViewModel() -> ViewModelForWebView {

@@ -75,12 +75,9 @@ extension MainViewController {
     
     func setupSearcBar() {
         searchBar.frame = CGRect(x:0, y:0, width: tableNews.frame.size.width, height:44)
-        
         searchBar.delegate = self
-        
         searchBar.barTintColor = UIColor.white
         searchBar.setBackgroundImage(UIImage.init(), for: UIBarPosition.any, barMetrics: UIBarMetrics.default)
-        
         searchBar.placeholder = "search"
         
         self.tableNews.tableHeaderView = searchBar

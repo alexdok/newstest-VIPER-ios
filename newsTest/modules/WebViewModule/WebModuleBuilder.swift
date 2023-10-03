@@ -10,13 +10,11 @@ import UIKit
 final class WebModuleBuilder {
     static func build(url: String, title: String) -> WebViewController {
         let interactor = WebInteractor(titleNews: title, urlNews: url)
-        let router = WebRouter()
-        let presenter = WebPresenter(interactor: interactor, router: router)
+        let presenter = WebPresenter(interactor: interactor)
         let viewController = WebViewController()
         presenter.view  = viewController
         viewController.presenter = presenter
         interactor.presenter = presenter
-        router.viewController = viewController
         return viewController
     }
 }
