@@ -133,7 +133,6 @@
 				9084EDEE2AB4745200B752D5 /* WebViewModel.swift */,
 				907682EE2AA0D9E10051F0BB /* WebPresenter.swift */,
 				907682F02AA0D9E10051F0BB /* WebInteractor.swift */,
-				907682EF2AA0D9E10051F0BB /* WebRouter.swift */,
 				907682ED2AA0D9E10051F0BB /* WebModuleBuilder.swift */,
 			);
 			path = WebViewModule;
@@ -239,6 +238,7 @@
 		90C4CEBA2A9F6EC700F53C57 /* helper */ = {
 			isa = PBXGroup;
 			children = (
+				907682EF2AA0D9E10051F0BB /* WebRouter.swift */,
 				90C4CEA52A9F3EEA00F53C57 /* UITableView+ReusableView.swift */,
 			);
 			path = helper;

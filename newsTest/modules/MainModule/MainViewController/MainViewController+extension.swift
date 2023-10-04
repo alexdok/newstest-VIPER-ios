@@ -81,7 +81,6 @@ extension MainViewController {
         searchBar.placeholder = "search"
         
         self.tableNews.tableHeaderView = searchBar
-        
     }
 }
 

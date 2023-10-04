@@ -58,6 +58,7 @@ final class MainInteractor: MainInteractorProtocol {
    private func getImgesAndTitles() {
         clearImagesAndTitles()
         let dispatchGroup = DispatchGroup()
+       
         arrayNewsForView.forEach { news in
             dispatchGroup.enter()
             network.loadImage(urlForImage: news.urlImage) { image in

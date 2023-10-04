@@ -44,8 +44,9 @@ final class MainTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupConstraaints()
-       
-        createDefaultShadow(for: imageBackground)
+        createShadow(for: imageBackground)
+        createShadow(for: titleLabel)
+        createShadow(for: linkCountLabel)
     }
     required init?(coder: NSCoder) {
         fatalError("init has not been implemented")
@@ -58,14 +59,28 @@ final class MainTableViewCell: UITableViewCell {
         linkCountLabel.text = nil
     }
     
-    private func createDefaultShadow(for myView: UIView) {
-        myView.layer.shadowColor = UIColor.black.cgColor
-        myView.layer.shadowOffset = CGSize(width: -1, height: 1)
-        myView.layer.shadowOpacity = 1
-        myView.layer.shadowRadius = Constants.imageViewCornerRadius / 3
-        
-        myView.clipsToBounds = false
-        myView.layer.masksToBounds = false
+    private func createShadow(for myView: UIView) {
+        switch myView {
+        case is UILabel:
+            myView.layer.shadowColor = UIColor.gray.cgColor
+            myView.layer.shadowOffset = CGSize(width: -1, height: 2)
+            myView.layer.shadowOpacity = 0.8
+            myView.layer.shadowRadius = 2
+            
+            myView.clipsToBounds = false
+            myView.layer.masksToBounds = false
+        case is UIView :
+            myView.layer.shadowColor = UIColor.black.cgColor
+            myView.layer.shadowOffset = CGSize(width: -3, height: 3)
+            myView.layer.shadowOpacity = 1
+            myView.layer.shadowRadius = 4
+            
+            myView.clipsToBounds = false
+            myView.layer.masksToBounds = false
+        default:
+            return
+        }
+      
     }
     
     func setupValuesCell(values: MainTableViewCellViewModel) {
