@@ -22,7 +22,7 @@ final class MainViewController: UIViewController {
     private let alertBuilder = AlertBuilderImpl()
     lazy var canGiveNewCells = false
     var bottomConstraint: NSLayoutConstraint?
-    var cellsNewsForTable: [MainTableViewCellViewModel] = []
+    var cellsNewsForTable: [MainTableViewCellModel] = []
     var indicator = ActivityIndicator()
     
     // MARK: - View lifecycle
@@ -35,7 +35,7 @@ final class MainViewController: UIViewController {
         configureTableNews()
         setupSearcBar()
         
-        presenter?.loadFirstsViews()
+        presenter?.loadFirstView()
         indicator.showLoading(onView: view)
     }
 
@@ -47,7 +47,7 @@ final class MainViewController: UIViewController {
     
     @objc private func refresh(_ sender: AnyObject) {
         cellsNewsForTable.removeAll()
-        presenter?.loadFirstsViews()
+        presenter?.loadFirstView()
         tableNews.reloadData()
     }
     
@@ -76,6 +76,24 @@ private extension MainViewController {
         view.backgroundColor = .white
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = "Loading....."
+    }
+    
+    private func setupSearcBar() {
+        searchBar.frame = CGRect(x:0, y:0, width: tableNews.frame.size.width, height:44)
+        searchBar.delegate = self
+        searchBar.barTintColor = UIColor.white
+        searchBar.setBackgroundImage(UIImage.init(), for: UIBarPosition.any, barMetrics: UIBarMetrics.default)
+        searchBar.placeholder = "search"
+        
+        self.tableNews.tableHeaderView = searchBar
+    }
+    
+    private func configureTableNews() {
+        tableNews.rowHeight = CGFloat(Constants.tableNewsRowHeight)
+        tableNews.estimatedRowHeight = UITableView.automaticDimension
+        tableNews.dataSource = self
+        tableNews.delegate = self
+        tableNews.register(MainTableViewCell.self)
     }
 }
 

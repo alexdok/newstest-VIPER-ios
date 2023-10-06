@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct MainTableViewCellViewModel {
+struct MainTableViewCellModel {
     let title: String
     let image: UIImage
     var count: Int

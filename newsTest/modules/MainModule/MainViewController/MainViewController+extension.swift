@@ -38,14 +38,6 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
       default: break
       }
     }
-    
-    func configureTableNews() {
-        tableNews.rowHeight = CGFloat(Constants.tableNewsRowHeight)
-        tableNews.estimatedRowHeight = UITableView.automaticDimension
-        tableNews.dataSource = self
-        tableNews.delegate = self
-        tableNews.register(MainTableViewCell.self)
-    }
 }
 
 extension MainViewController: UISearchBarDelegate {
@@ -53,7 +45,7 @@ extension MainViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         cellsNewsForTable.removeAll()
         presenter?.theme = searchBar.searchTextField.text ?? "main"
-        presenter?.loadFirstsViews()
+        presenter?.loadFirstView()
         indicator.showLoading(onView: view)
         searchBar.searchTextField.text = nil
     }
@@ -71,16 +63,6 @@ extension MainViewController {
             tableNews.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableNews.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
         ])
-    }
-    
-    func setupSearcBar() {
-        searchBar.frame = CGRect(x:0, y:0, width: tableNews.frame.size.width, height:44)
-        searchBar.delegate = self
-        searchBar.barTintColor = UIColor.white
-        searchBar.setBackgroundImage(UIImage.init(), for: UIBarPosition.any, barMetrics: UIBarMetrics.default)
-        searchBar.placeholder = "search"
-        
-        self.tableNews.tableHeaderView = searchBar
     }
 }
 

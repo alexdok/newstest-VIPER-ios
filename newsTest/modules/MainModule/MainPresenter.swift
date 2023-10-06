@@ -8,11 +8,11 @@
 import UIKit
 
 protocol MainPresenterProtocol: AnyObject {
-    func loadFirstsViews()
+    func loadFirstView()
     func needMoreCells() 
     func getValuesForView(images: [UIImage], titles:[String])
     func didTapNews(title: String, image: UIImage)
-    func createCellModels(images: [UIImage], titles: [String]) -> [MainTableViewCellViewModel]
+    func createCellModels(images: [UIImage], titles: [String]) -> [MainTableViewCellModel]
     var theme: String { get set }
     var page: Int { get set }
 }
@@ -40,8 +40,8 @@ extension MainPresenter: MainPresenterProtocol {
         router.openDetailController(image: image, news: news ?? ObjectNewsData())
     }
     
-     func createCellModels(images: [UIImage], titles: [String]) -> [MainTableViewCellViewModel] {
-        var arrayModelsForCells:[MainTableViewCellViewModel] = []
+     func createCellModels(images: [UIImage], titles: [String]) -> [MainTableViewCellModel] {
+        var arrayModelsForCells:[MainTableViewCellModel] = []
         onMain {
             var imageCount = 0
             for title in titles {
@@ -57,8 +57,8 @@ extension MainPresenter: MainPresenterProtocol {
         return arrayModelsForCells
     }
     
-    private func createTableViewModel(image: UIImage, title: String) -> MainTableViewCellViewModel {
-        let model = MainTableViewCellViewModel(title: title, image: image, count: LocalStorageManager.shared.loadCount(title))
+    private func createTableViewModel(image: UIImage, title: String) -> MainTableViewCellModel {
+        let model = MainTableViewCellModel(title: title, image: image, count: LocalStorageManager.shared.loadCount(title))
         return model
     }
     
@@ -80,9 +80,8 @@ extension MainPresenter: MainPresenterProtocol {
         interactor.getNews(theme: theme, page: page)
     }
     
-    internal func loadFirstsViews() {
+    internal func loadFirstView() {
         testConnect()
-        print(page)
         interactor.clearAll()
         interactor.getNews(theme: theme, page: page)
     }

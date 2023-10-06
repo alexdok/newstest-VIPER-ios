@@ -83,7 +83,7 @@ final class MainTableViewCell: UITableViewCell {
       
     }
     
-    func setupValuesCell(values: MainTableViewCellViewModel) {
+    func setupValuesCell(values: MainTableViewCellModel) {
         imageCell.image = values.image
         titleLabel.text = values.title
         linkCountLabel.text = String(values.count)
