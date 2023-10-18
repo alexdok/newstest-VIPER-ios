@@ -69,7 +69,7 @@ final class MainTableViewCell: UITableViewCell {
             
             myView.clipsToBounds = false
             myView.layer.masksToBounds = false
-        case is UIView :
+        default :
             myView.layer.shadowColor = UIColor.black.cgColor
             myView.layer.shadowOffset = CGSize(width: -3, height: 3)
             myView.layer.shadowOpacity = 1
@@ -77,8 +77,6 @@ final class MainTableViewCell: UITableViewCell {
             
             myView.clipsToBounds = false
             myView.layer.masksToBounds = false
-        default:
-            return
         }
       
     }
