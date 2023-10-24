@@ -22,8 +22,8 @@ extension WebViewController: WKNavigationDelegate {
 }
 
 extension WebViewController: WebViewProtocol {
-    func showViewWithViewModel(viewModel: ViewModelForWebView) {
-        selectedNews = viewModel.titel
+    func showViewWithViewModel(viewModel: WebViewModel) {
+        selectedNews = viewModel.title
         newsURL = viewModel.url
     }
 }

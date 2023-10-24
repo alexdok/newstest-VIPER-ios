@@ -9,7 +9,7 @@ import UIKit
 
 protocol MainPresenterProtocol: AnyObject {
     func loadFirstView()
-    func needMoreCells() 
+    func needMoreNews() 
     func getValuesForView(images: [UIImage], titles:[String])
     func didTapNews(title: String, image: UIImage)
     func createCellModels(images: [UIImage], titles: [String]) -> [MainTableViewCellModel]
@@ -74,7 +74,7 @@ extension MainPresenter: MainPresenterProtocol {
         } else { return }
     }
     
-    func needMoreCells() {
+    func needMoreNews() {
         testConnect()
         page += 1
         interactor.getNews(theme: theme, page: page)

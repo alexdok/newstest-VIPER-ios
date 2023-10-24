@@ -34,7 +34,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
           canGiveNewCells = true
       case let row where row > cellsNewsForTable.count - 2 && canGiveNewCells == true :
           canGiveNewCells.toggle()
-          presenter?.needMoreCells()
+          presenter?.needMoreNews()
       default: break
       }
     }

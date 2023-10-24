@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct ViewModelForWebView {
-    let titel: String
+struct WebViewModel {
+    let title: String
     let url: String
 }
 

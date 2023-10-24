@@ -18,8 +18,8 @@ final class WebPresenter {
       
     }
     
-    func createViewModel() -> ViewModelForWebView {
-        return ViewModelForWebView(titel: interactor.titleNews, url: interactor.urlNews)
+    func createViewModel() -> WebViewModel {
+        return WebViewModel(title: interactor.titleNews, url: interactor.urlNews)
     }
 }
 

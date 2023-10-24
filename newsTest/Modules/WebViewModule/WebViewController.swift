@@ -8,7 +8,7 @@ import UIKit
 import WebKit
 
 protocol WebViewProtocol: AnyObject {
-    func showViewWithViewModel(viewModel: ViewModelForWebView)
+    func showViewWithViewModel(viewModel: WebViewModel)
 }
 
 final class WebViewController: UIViewController {
