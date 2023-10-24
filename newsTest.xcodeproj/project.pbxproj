@@ -18,7 +18,6 @@
 		907682EC2AA0D43F0051F0BB /* WebView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907682EB2AA0D43F0051F0BB /* WebView+extension.swift */; };
 		907682F12AA0D9E10051F0BB /* WebModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907682ED2AA0D9E10051F0BB /* WebModuleBuilder.swift */; };
 		907682F22AA0D9E10051F0BB /* WebPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907682EE2AA0D9E10051F0BB /* WebPresenter.swift */; };
-		907682F32AA0D9E10051F0BB /* WebRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907682EF2AA0D9E10051F0BB /* WebRouter.swift */; };
 		907682F42AA0D9E10051F0BB /* WebInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907682F02AA0D9E10051F0BB /* WebInteractor.swift */; };
 		9084EDEF2AB4745200B752D5 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9084EDEE2AB4745200B752D5 /* WebViewModel.swift */; };
 		909F37452AB1DF5900D28466 /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F37442AB1DF5900D28466 /* LocalStorageManager.swift */; };
@@ -71,7 +70,6 @@
 		907682EB2AA0D43F0051F0BB /* WebView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WebView+extension.swift"; sourceTree = "<group>"; };
 		907682ED2AA0D9E10051F0BB /* WebModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebModuleBuilder.swift; sourceTree = "<group>"; };
 		907682EE2AA0D9E10051F0BB /* WebPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPresenter.swift; sourceTree = "<group>"; };
-		907682EF2AA0D9E10051F0BB /* WebRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRouter.swift; sourceTree = "<group>"; };
 		907682F02AA0D9E10051F0BB /* WebInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebInteractor.swift; sourceTree = "<group>"; };
 		9084EDEE2AB4745200B752D5 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		909F37442AB1DF5900D28466 /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
@@ -260,7 +258,6 @@
 		90C4CEBA2A9F6EC700F53C57 /* helper */ = {
 			isa = PBXGroup;
 			children = (
-				907682EF2AA0D9E10051F0BB /* WebRouter.swift */,
 				90C4CEA52A9F3EEA00F53C57 /* UITableView+ReusableView.swift */,
 			);
 			path = helper;
@@ -393,7 +390,6 @@
 				90C4CEB32A9F624F00F53C57 /* RequestBuilder.swift in Sources */,
 				90C4CEA62A9F3EEA00F53C57 /* UITableView+ReusableView.swift in Sources */,
 				90C4CEB02A9F620100F53C57 /* Dictionary+extension.swift in Sources */,
-				907682F32AA0D9E10051F0BB /* WebRouter.swift in Sources */,
 				90C4CE8E2A9F25CB00F53C57 /* MainTableViewCell.swift in Sources */,
 				907682F12AA0D9E10051F0BB /* WebModuleBuilder.swift in Sources */,
 				90C4CEB92A9F62B800F53C57 /* ObjectNewsData.swift in Sources */,
