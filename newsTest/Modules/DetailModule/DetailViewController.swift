@@ -38,7 +38,7 @@ final class DetailViewController: UIViewController {
     }
     
     deinit {
-        print("---------------------------Detail controller was DEINITED--------------------------------")
+        print("---------------------------Detail controller was DEINIT--------------------------------")
     }
 }
 

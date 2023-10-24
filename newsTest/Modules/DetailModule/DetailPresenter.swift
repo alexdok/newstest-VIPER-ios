@@ -50,7 +50,6 @@ extension DetailPresenter: DetailPresenterProtocol {
         let title = interactor.news.title ?? ""
         let url = interactor.news.url ?? ""
         router.openFullNewsObWebViewController(title: title, url: url)
-     
     }
     
     func viewDidLoaded() {
