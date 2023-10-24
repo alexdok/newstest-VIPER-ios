@@ -27,7 +27,7 @@ final class NetworkServiceImpl: NetworkService {
         self.requestBilder = requestBilder
     }
     
-    internal func sendRequestForNews( theme: String, page: Int, completion: @escaping ([ObjectNewsData?]) -> Void) {
+    func sendRequestForNews(theme: String, page: Int, completion: @escaping ([ObjectNewsData?]) -> Void) {
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
         let URLParams = createParamsForRequest(theme: theme, keyAPI: Constants.apiKey, page: page)
@@ -37,18 +37,13 @@ final class NetworkServiceImpl: NetworkService {
             if error == nil, let data = data {
                 do {
                     let news = try JSONDecoder().decode(News.self, from: data)
-                    let objectNews = self.mapper.map(news)
-                    var objectNewsFinish = [ObjectNewsData]()
-                    for news in objectNews {
-                        if news.title != nil {
-                            objectNewsFinish.append(news)
-                        }
-                    }
-                    completion(objectNewsFinish)
+                    let objectNews = self.filterObjectNews(news: news)
+                    completion(objectNews)
                 } catch {
                     print(error.localizedDescription)
-                    let obj: [ObjectNewsData?] = [nil]
-                    completion(obj)
+                    
+                    let objNil: [ObjectNewsData?] = [nil]
+                    completion(objNil)
                 }
             }
         }
@@ -56,7 +51,7 @@ final class NetworkServiceImpl: NetworkService {
         session.finishTasksAndInvalidate()
     }
     
-    internal func loadImage(urlForImage: String, completion: @escaping (UIImage) -> Void) {
+    func loadImage(urlForImage: String, completion: @escaping (UIImage) -> Void) {
         if let image = cacheDataSource.object(forKey: urlForImage as AnyObject) {
             // Изображение найдено в кэше
             completion(image)
@@ -91,6 +86,17 @@ final class NetworkServiceImpl: NetworkService {
             }
         }
         task.resume()
+    }
+    
+    private func filterObjectNews(news: News) -> [ObjectNewsData] {
+        let objectNews = mapper.map(news)
+        var objectNewsFinish = [ObjectNewsData]()
+        objectNews.forEach {
+            if $0.title != nil {
+                objectNewsFinish.append($0)
+            }
+        }
+        return objectNewsFinish
     }
     
     private func returnDefaultImage() -> UIImage {
