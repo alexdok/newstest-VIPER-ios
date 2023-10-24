@@ -40,7 +40,7 @@ final class MainInteractor: MainInteractorProtocol {
                 let newsForView = NewsForView(title: newsTitle, urlImage: newsImage)
                 self?.arrayNewsForView.append(newsForView)
             }
-            self?.getImgesAndTitles()
+            self?.getImagesAndTitles()
         }
     }
     
@@ -55,7 +55,7 @@ final class MainInteractor: MainInteractorProtocol {
        storage.arrayTitles.removeAll()
     }
     
-   private func getImgesAndTitles() {
+   private func getImagesAndTitles() {
         clearImagesAndTitles()
         let dispatchGroup = DispatchGroup()
        

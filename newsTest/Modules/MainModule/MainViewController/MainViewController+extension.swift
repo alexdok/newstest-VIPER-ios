@@ -41,7 +41,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension MainViewController: UISearchBarDelegate {
-    internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         cellsNewsForTable.removeAll()
         presenter?.theme = searchBar.searchTextField.text ?? "main"
