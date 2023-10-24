@@ -62,7 +62,7 @@ extension MainPresenter: MainPresenterProtocol {
         return model
     }
     
-    internal func getValuesForView(images: [UIImage], titles: [String]) {
+    func getValuesForView(images: [UIImage], titles: [String]) {
         view?.viewIsReady(images: images, titles: titles)
         view?.finishActivityIndicator()
     }
@@ -74,13 +74,13 @@ extension MainPresenter: MainPresenterProtocol {
         } else { return }
     }
     
-    internal func needMoreCells() {
+    func needMoreCells() {
         testConnect()
         page += 1
         interactor.getNews(theme: theme, page: page)
     }
     
-    internal func loadFirstView() {
+    func loadFirstView() {
         testConnect()
         interactor.clearAll()
         interactor.getNews(theme: theme, page: page)
