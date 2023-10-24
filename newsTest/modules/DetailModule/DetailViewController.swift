@@ -17,13 +17,12 @@ final class DetailViewController: UIViewController {
     
     var urlToFullNews: String?
     var urlToImage: String?
-    var labelTitle = UILabel()
-    var labelDetailNews = UILabel()
-    var labelDateNews = UILabel()
-    var labelNewsSource = UILabel()
+    let labelTitle = UILabel()
+    let labelDetailNews = UILabel()
+    let labelDateNews = UILabel()
+    let labelNewsSource = UILabel()
     let button = UIButton()
-    var imageView = UIImageView()
-    let labelLoading = UILabel()
+    let imageView = UIImageView()
 
     // MARK: - View lifecycle
     override func viewDidLoad() {

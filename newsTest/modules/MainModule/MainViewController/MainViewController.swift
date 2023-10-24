@@ -51,10 +51,6 @@ final class MainViewController: UIViewController {
         tableNews.reloadData()
     }
     
-    internal func finishActivityIndicator() {
-        refreshControler.endRefreshing()
-    }
-    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
        view.endEditing(true)
        bottomConstraint?.constant = 0
@@ -100,14 +96,18 @@ private extension MainViewController {
 // MARK: - MainViewProtocol
 extension MainViewController: MainViewProtocol {
     
-    internal func showAlert(text: AlertModel) {
-       let alert = alertBuilder.createAlert(with: text)
+    func finishActivityIndicator() {
+        refreshControler.endRefreshing()
+    }
+    
+    func showAlert(text: AlertModel) {
+        let alert = alertBuilder.createAlert(with: text)
         present(alert, animated: true)
     }
     
     func viewIsReady(images: [UIImage], titles: [String]) {
-       guard let presenter = presenter else { return }
-       let cellsModelsForTable = presenter.createCellModels(images: images, titles: titles)
+        guard let presenter = presenter else { return }
+        let cellsModelsForTable = presenter.createCellModels(images: images, titles: titles)
         cellsNewsForTable += cellsModelsForTable
         self.navigationItem.title = "Table News"
         self.indicator.hideLoading()
