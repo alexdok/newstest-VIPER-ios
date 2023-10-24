@@ -53,7 +53,7 @@ extension MainViewController: UISearchBarDelegate {
 
 extension MainViewController {
     // setup constraints
-    func createTableNews() {
+    func addTableViewNewsToView() {
         view.addSubview(tableNews)
         tableNews.translatesAutoresizingMaskIntoConstraints = false
         

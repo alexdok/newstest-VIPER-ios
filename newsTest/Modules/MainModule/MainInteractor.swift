@@ -27,11 +27,11 @@ final class MainInteractor: MainInteractorProtocol {
         self.storage = storage
     }
     
-   internal func checkInternetConnection() -> Bool{
+    func checkInternetConnection() -> Bool{
         return networStatuskMonitor.isReachable
     }
     
-    internal func getNews(theme: String, page: Int) {
+     func getNews(theme: String, page: Int) {
         arrayNewsForView.removeAll()
         network.sendRequestForNews(theme: theme, page: page) { [weak self] objectNews in
             self?.storage.news.append(contentsOf: objectNews)
@@ -44,7 +44,7 @@ final class MainInteractor: MainInteractorProtocol {
         }
     }
     
-   internal func clearAll() {
+    func clearAll() {
         clearImagesAndTitles()
         arrayNewsForView.removeAll()
         storage.news.removeAll()

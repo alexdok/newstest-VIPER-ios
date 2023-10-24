@@ -29,10 +29,9 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRefreshController()
-        
-        configureVC()
-        createTableNews()
-        configureTableNews()
+        setupVC()
+        addTableViewNewsToView()
+        setupTableViewNews()
         setupSearcBar()
         
         presenter?.loadFirstView()
@@ -68,10 +67,10 @@ private extension MainViewController {
         tableNews.addSubview(refreshControler)
     }
     
-    private func configureVC() {
+    private func setupVC() {
         view.backgroundColor = .white
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = "Loading....."
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = "Loading....."
     }
     
     private func setupSearcBar() {
@@ -84,7 +83,7 @@ private extension MainViewController {
         self.tableNews.tableHeaderView = searchBar
     }
     
-    private func configureTableNews() {
+    private func setupTableViewNews() {
         tableNews.rowHeight = CGFloat(Constants.tableNewsRowHeight)
         tableNews.estimatedRowHeight = UITableView.automaticDimension
         tableNews.dataSource = self
@@ -109,8 +108,8 @@ extension MainViewController: MainViewProtocol {
         guard let presenter = presenter else { return }
         let cellsModelsForTable = presenter.createCellModels(images: images, titles: titles)
         cellsNewsForTable += cellsModelsForTable
-        self.navigationItem.title = "Table News"
-        self.indicator.hideLoading()
-        self.tableNews.reloadData()
+        navigationItem.title = "Table News"
+        indicator.hideLoading()
+        tableNews.reloadData()
     }
 }

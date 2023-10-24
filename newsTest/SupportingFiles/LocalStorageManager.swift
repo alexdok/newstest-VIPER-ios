@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol SaveManager {
+protocol LocalStorage {
     func save(_ title: String, count: Int)
     func loadCount(_ title: String) -> Int
     func saveSettingsList(arrayOfLabels: [String?], titleForNews: String)
     func loadSettingsList(titleForNews: String) -> [String?]
 }
 
-class LocalStorageManager: SaveManager {
+class LocalStorageManager: LocalStorage {
     static let shared = LocalStorageManager()
     private init() {}
     
