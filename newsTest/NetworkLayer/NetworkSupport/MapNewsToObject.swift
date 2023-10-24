@@ -13,7 +13,7 @@ protocol MapNewsToObject {
 
 struct MapNewsToObjectImpl: MapNewsToObject {
     func map(_ news: News) -> [ObjectNewsData] {
-        var newObjectNewsAraay: [ObjectNewsData] = []
+        var newObjectNewsArraay: [ObjectNewsData] = []
         for items in news.articles {
             let objectNews = ObjectNewsData(author: items.author,
                                             title: items.title,
@@ -22,9 +22,9 @@ struct MapNewsToObjectImpl: MapNewsToObject {
                                             urlToImage: items.urlToImage,
                                             publishedAt: items.publishedAt,
                                             content: items.content)
-                newObjectNewsAraay.append(objectNews)
+                newObjectNewsArraay.append(objectNews)
         }
-        return newObjectNewsAraay
+        return newObjectNewsArraay
     }
 }
 
