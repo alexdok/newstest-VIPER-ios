@@ -17,7 +17,7 @@ final class MainTableViewCell: UITableViewCell {
         return imageBackground
     }()
     
-    let imageView: UIImageView = {
+    let image: UIImageView = {
         let imageCell = UIImageView()
         imageCell.layer.cornerRadius = Constants.imageViewCornerRadius
         imageCell.clipsToBounds = true
@@ -54,7 +54,7 @@ final class MainTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        imageView.image = nil
+        image.image = nil
         titleLabel.text = nil
         linkCountLabel.text = nil
     }
@@ -82,13 +82,13 @@ final class MainTableViewCell: UITableViewCell {
     }
     
     func setupValuesCell(values: MainTableViewCellModel) {
-        imageView.image = values.image
+        image.image = values.image
         titleLabel.text = values.title
         linkCountLabel.text = String(values.count)
     }
     
    private func setupConstraaints() {
-        [imageBackground, imageView, titleLabel, linkCountLabel].forEach {
+        [imageBackground, image, titleLabel, linkCountLabel].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview($0)
         }
@@ -98,10 +98,10 @@ final class MainTableViewCell: UITableViewCell {
             imageBackground.widthAnchor.constraint(equalToConstant: Constants.imageCellWidth),
             imageBackground.heightAnchor.constraint(equalToConstant: Constants.imageCellHeight),
             
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.cellItemsPadding),
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.cellItemsPadding),
-            imageView.widthAnchor.constraint(equalToConstant: Constants.imageCellWidth),
-            imageView.heightAnchor.constraint(equalToConstant: Constants.imageCellHeight),
+            image.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.cellItemsPadding),
+            image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.cellItemsPadding),
+            image.widthAnchor.constraint(equalToConstant: Constants.imageCellWidth),
+            image.heightAnchor.constraint(equalToConstant: Constants.imageCellHeight),
             
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.cellItemsPadding),
             titleLabel.leadingAnchor.constraint(equalTo: imageBackground.trailingAnchor, constant: Constants.cellItemsPadding),
