@@ -8,7 +8,7 @@
 import UIKit
 
 protocol NetworkService {
-    func sendRequestForNews( theme: String, page: Int, completion: @escaping ([ObjectNewsData?]) -> Void)
+    func loadNews( theme: String, page: Int, completion: @escaping ([ObjectNewsData?]) -> Void)
     func loadImage(urlForImage: String, completion: @escaping (UIImage) -> Void)
 }
 
@@ -27,7 +27,7 @@ final class NetworkServiceImpl: NetworkService {
         self.requestBilder = requestBilder
     }
     
-    func sendRequestForNews(theme: String, page: Int, completion: @escaping ([ObjectNewsData?]) -> Void) {
+    func loadNews(theme: String, page: Int, completion: @escaping ([ObjectNewsData?]) -> Void) {
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
         let URLParams = createParamsForRequest(theme: theme, keyAPI: Constants.apiKey, page: page)
@@ -41,9 +41,7 @@ final class NetworkServiceImpl: NetworkService {
                     completion(objectNews)
                 } catch {
                     print(error.localizedDescription)
-                    
-                    let objNil: [ObjectNewsData?] = [nil]
-                    completion(objNil)
+                    completion([nil])
                 }
             }
         }

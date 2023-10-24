@@ -33,7 +33,7 @@ final class MainInteractor: MainInteractorProtocol {
     
      func getNews(theme: String, page: Int) {
         arrayNewsForView.removeAll()
-        network.sendRequestForNews(theme: theme, page: page) { [weak self] objectNews in
+        network.loadNews(theme: theme, page: page) { [weak self] objectNews in
             self?.storage.news.append(contentsOf: objectNews)
             objectNews.forEach { news in
                 guard let newsTitle = news?.title, let newsImage = news?.urlToImage else { return }
