@@ -68,11 +68,9 @@ extension MainPresenter: MainPresenterProtocol {
         let cellsModelArray = createCellModels(images: images, titles: titles)
         view?.viewIsReady(cellsModelArray: cellsModelArray)
         view?.finishActivityIndicator()
-        if searchStatus {
-            if !cellsModelArray.isEmpty {
+        if searchStatus && !cellsModelArray.isEmpty {
                 view?.showFirstRow()
                 searchStatus.toggle()
-            }
         }
     }
     
