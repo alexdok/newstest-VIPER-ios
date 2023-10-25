@@ -263,6 +263,7 @@
 				90C4CEAD2A9F61CD00F53C57 /* URL+extension.swift */,
 				90C4CEAF2A9F620100F53C57 /* Dictionary+extension.swift */,
 				90C4CEB22A9F624F00F53C57 /* RequestBuilder.swift */,
+				90E695C72AE7FE9B00A2B88F /* Method.swift */,
 				90C4CEB62A9F628300F53C57 /* News.swift */,
 				90C4CEB82A9F62B800F53C57 /* ObjectNewsData.swift */,
 				90C4CEB42A9F626800F53C57 /* MapNewsToObject.swift */,
@@ -301,7 +302,6 @@
 			children = (
 				90E695BD2AE7F41F00A2B88F /* Endpoints.swift */,
 				90E695BB2AE7F3C100A2B88F /* NetworkClient.swift */,
-				90E695C72AE7FE9B00A2B88F /* Method.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";

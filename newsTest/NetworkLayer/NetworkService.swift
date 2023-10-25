@@ -31,7 +31,7 @@ final class NetworkServiceImpl: NetworkService {
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
         let URLParams = createParamsForRequest(theme: theme, keyAPI: Constants.apiKey, page: page)
-        guard let request = requestBilder.createRequestFrom(url: Constants.url, params: URLParams) else { return }
+        guard let request = requestBilder.createRequestFrom(url: Constants.url, params: URLParams, httpMethod: Method.get.rawValue) else { return }
         
         let task = session.dataTask(with: request) { data, response, error in
             if error == nil, let data = data {
