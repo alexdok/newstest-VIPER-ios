@@ -65,14 +65,10 @@ extension MainPresenter: MainPresenterProtocol {
     }
     
     func getValuesForView(images: [UIImage], titles: [String]) {
-        if !searchStatus {
-            let cellsModelArray = createCellModels(images: images, titles: titles)
-            view?.viewIsReady(cellsModelArray: cellsModelArray)
-            view?.finishActivityIndicator()
-        } else {
-            let cellsModelArray = createCellModels(images: images, titles: titles)
-            view?.viewIsReady(cellsModelArray: cellsModelArray)
-            view?.finishActivityIndicator()
+        let cellsModelArray = createCellModels(images: images, titles: titles)
+        view?.viewIsReady(cellsModelArray: cellsModelArray)
+        view?.finishActivityIndicator()
+        if searchStatus {
             if !cellsModelArray.isEmpty {
                 view?.showFirstRow()
                 searchStatus.toggle()
