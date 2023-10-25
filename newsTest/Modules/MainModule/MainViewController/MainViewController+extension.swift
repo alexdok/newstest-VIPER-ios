@@ -18,6 +18,10 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         needMoreCells(indexPath: indexPath)
         return cell
     }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return searchBar
+    }
+
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

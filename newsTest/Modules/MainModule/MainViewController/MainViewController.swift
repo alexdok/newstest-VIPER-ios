@@ -32,7 +32,7 @@ final class MainViewController: UIViewController {
         setupVC()
         addTableViewNewsToView()
         setupTableViewNews()
-        setupSearcBar()
+        setupSearchBar()
         
         presenter?.loadFirstView()
         indicator.showLoading(onView: view)
@@ -73,14 +73,11 @@ private extension MainViewController {
         navigationItem.title = "Loading....."
     }
     
-    private func setupSearcBar() {
-        searchBar.frame = CGRect(x:0, y:0, width: tableNews.frame.size.width, height:44)
+    private func setupSearchBar() {
+        searchBar.frame = CGRect(x:0, y:0, width: tableNews.frame.size.width, height:33)
         searchBar.delegate = self
         searchBar.barTintColor = UIColor.white
-        searchBar.setBackgroundImage(UIImage.init(), for: UIBarPosition.any, barMetrics: UIBarMetrics.default)
         searchBar.placeholder = "search"
-        
-        self.tableNews.tableHeaderView = searchBar
     }
     
     private func setupTableViewNews() {
