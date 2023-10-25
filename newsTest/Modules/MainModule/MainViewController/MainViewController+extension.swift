@@ -28,15 +28,15 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         tableNews.reloadData()
     }
     
-  private func needMoreCells(indexPath: IndexPath) {
-      switch indexPath.row {
-      case cellsNewsForTable.count - 10:
-          canGiveNewCells = true
-      case let row where row > cellsNewsForTable.count - 2 && canGiveNewCells == true :
-          canGiveNewCells.toggle()
-          presenter?.needMoreNews()
-      default: break
-      }
+    private func needMoreCells(indexPath: IndexPath) {
+        switch indexPath.row {
+        case cellsNewsForTable.count - 10:
+            canGiveNewCells = true
+        case let row where row > cellsNewsForTable.count - 2 && canGiveNewCells == true :
+            canGiveNewCells.toggle()
+            presenter?.needMoreNews()
+        default: break
+        }
     }
 }
 

@@ -4,7 +4,7 @@
 //
 //  Created by алексей ганзицкий on 13.09.2023.
 //
-
+// пока реализован как синглтон , потом нужно переделать 
 import Foundation
 
 protocol LocalStorage {
