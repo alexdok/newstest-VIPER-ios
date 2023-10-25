@@ -15,6 +15,7 @@ protocol MainPresenterProtocol: AnyObject {
     func createCellModels(images: [UIImage], titles: [String]) -> [MainTableViewCellModel]
     var theme: String { get set }
     var page: Int { get set }
+    var searchStatus: Bool { get set }
 }
 
 final class MainPresenter {
@@ -23,6 +24,7 @@ final class MainPresenter {
     let interactor: MainInteractorProtocol
     var theme = "sport"
     var page = 1
+    var searchStatus = false
     
     init(interactor: MainInteractorProtocol, router: MainRouterProtocol) {
         self.interactor = interactor
@@ -63,8 +65,19 @@ extension MainPresenter: MainPresenterProtocol {
     }
     
     func getValuesForView(images: [UIImage], titles: [String]) {
-        view?.viewIsReady(images: images, titles: titles)
-        view?.finishActivityIndicator()
+        if !searchStatus {
+            let cellsModelArray = createCellModels(images: images, titles: titles)
+            view?.viewIsReady(cellsModelArray: cellsModelArray)
+            view?.finishActivityIndicator()
+        } else {
+            let cellsModelArray = createCellModels(images: images, titles: titles)
+            view?.viewIsReady(cellsModelArray: cellsModelArray)
+            view?.finishActivityIndicator()
+            if !cellsModelArray.isEmpty {
+                view?.showFirstRow()
+                searchStatus.toggle()
+            }
+        }
     }
     
     private func testConnect() {

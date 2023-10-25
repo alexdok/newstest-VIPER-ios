@@ -10,7 +10,8 @@ import UIKit
 protocol MainViewProtocol: AnyObject {
     func finishActivityIndicator()
     func showAlert(text: AlertModel)
-    func viewIsReady(images: [UIImage], titles: [String])
+    func viewIsReady(cellsModelArray: [MainTableViewCellModel])
+    func showFirstRow()
 }
 
 final class MainViewController: UIViewController {
@@ -91,6 +92,12 @@ private extension MainViewController {
 
 // MARK: - MainViewProtocol
 extension MainViewController: MainViewProtocol {
+   
+    func showFirstRow() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.tableNews.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        }
+    }
     
     func finishActivityIndicator() {
         refreshControler.endRefreshing()
@@ -101,10 +108,8 @@ extension MainViewController: MainViewProtocol {
         present(alert, animated: true)
     }
     
-    func viewIsReady(images: [UIImage], titles: [String]) {
-        guard let presenter = presenter else { return }
-        let cellsModelsForTable = presenter.createCellModels(images: images, titles: titles)
-        cellsNewsForTable += cellsModelsForTable
+    func viewIsReady(cellsModelArray: [MainTableViewCellModel]) {
+        cellsNewsForTable += cellsModelArray
         navigationItem.title = "Table News"
         indicator.hideLoading()
         tableNews.reloadData()

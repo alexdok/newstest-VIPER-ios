@@ -49,6 +49,7 @@ extension MainViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         cellsNewsForTable.removeAll()
         presenter?.theme = searchBar.searchTextField.text ?? "main"
+        presenter?.searchStatus = true
         presenter?.loadFirstView()
         indicator.showLoading(onView: view)
         searchBar.searchTextField.text = nil
