@@ -28,6 +28,7 @@ final class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        navigationItem.largeTitleDisplayMode = .never
         initialize()
         presenter?.viewDidLoaded()
     }
@@ -96,7 +97,6 @@ extension DetailViewController {
             imageView.heightAnchor.constraint(equalToConstant: 200)
         ])
  
-        
         NSLayoutConstraint.activate([
             labelTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             labelTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
