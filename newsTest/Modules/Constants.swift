@@ -13,7 +13,7 @@ enum Constants {
     static let imageViewCornerRadius: CGFloat = 20
     static let imageCellWidth: CGFloat = 150
     static let imageCellHeight: CGFloat = 110
-    static let tableViewBottomPadding: CGFloat = -40
+    static let tableViewBottomPadding: CGFloat = 0
     static let cellItemsPadding: CGFloat = 20
     static let standartOfsetItemsInDetailView: CGFloat = 16
 }
