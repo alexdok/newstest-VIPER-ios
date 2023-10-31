@@ -91,28 +91,28 @@ extension DetailViewController {
         view.addSubview(imageView)
         
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: labelTitle.bottomAnchor, constant: 16),
-            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            imageView.topAnchor.constraint(equalTo: labelTitle.bottomAnchor, constant: Constants.standartOfsetItemsInDetailView),
+            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.standartOfsetItemsInDetailView),
+            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.standartOfsetItemsInDetailView),
             imageView.heightAnchor.constraint(equalToConstant: 200)
         ])
  
         NSLayoutConstraint.activate([
             labelTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-            labelTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            labelTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            labelTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.standartOfsetItemsInDetailView),
+            labelTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.standartOfsetItemsInDetailView),
             
-            labelDetailNews.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
-            labelDetailNews.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            labelDetailNews.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            labelDetailNews.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: Constants.standartOfsetItemsInDetailView),
+            labelDetailNews.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.standartOfsetItemsInDetailView),
+            labelDetailNews.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.standartOfsetItemsInDetailView),
             
-            labelDateNews.topAnchor.constraint(equalTo: labelDetailNews.bottomAnchor, constant: 16),
-            labelDateNews.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            labelDateNews.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            labelDateNews.topAnchor.constraint(equalTo: labelDetailNews.bottomAnchor, constant: Constants.standartOfsetItemsInDetailView),
+            labelDateNews.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.standartOfsetItemsInDetailView),
+            labelDateNews.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.standartOfsetItemsInDetailView),
             
-            labelNewsSource.topAnchor.constraint(equalTo: labelDateNews.bottomAnchor, constant: 16),
-            labelNewsSource.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            labelNewsSource.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            labelNewsSource.topAnchor.constraint(equalTo: labelDateNews.bottomAnchor, constant: Constants.standartOfsetItemsInDetailView),
+            labelNewsSource.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.standartOfsetItemsInDetailView),
+            labelNewsSource.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.standartOfsetItemsInDetailView),
         ])
     }
     
@@ -128,9 +128,9 @@ extension DetailViewController {
         view.addSubview(button)
         
         NSLayoutConstraint.activate([
-            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
-            button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -Constants.standartOfsetItemsInDetailView),
+            button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.standartOfsetItemsInDetailView),
+            button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.standartOfsetItemsInDetailView),
             button.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
