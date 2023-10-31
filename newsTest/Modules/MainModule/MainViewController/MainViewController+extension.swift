@@ -56,6 +56,7 @@ extension MainViewController: UISearchBarDelegate {
     }
 }
 
+
 extension MainViewController {
     // setup constraints
     func addTableViewNewsToView() {

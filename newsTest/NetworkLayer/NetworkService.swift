@@ -46,7 +46,7 @@ final class NetworkServiceImpl: NetworkService {
             }
         }
         task.resume()
-        session.finishTasksAndInvalidate()
+//        session.finishTasksAndInvalidate()
     }
     
     func loadImage(urlForImage: String, completion: @escaping (UIImage) -> Void) {
@@ -105,7 +105,7 @@ final class NetworkServiceImpl: NetworkService {
     }
     
     private func compressAndCacheImage(_ image: UIImage, forKey key: String) {
-        let compressedImage = image.jpegData(compressionQuality: 0.0)
+        let compressedImage = image.jpegData(compressionQuality: 0.1)
         
         if let data = compressedImage, let compressedImage = UIImage(data: data) {
             cacheDataSource.setObject(compressedImage, forKey: key as AnyObject)

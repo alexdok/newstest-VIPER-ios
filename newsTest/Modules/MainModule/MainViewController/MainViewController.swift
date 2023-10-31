@@ -21,8 +21,8 @@ final class MainViewController: UIViewController {
     let tableNews = UITableView()
     private let refreshControler = UIRefreshControl()
     private let alertBuilder = AlertBuilderImpl()
+    private var previousContentOffset: CGFloat = 0
     lazy var canGiveNewCells = false
-    var bottomConstraint: NSLayoutConstraint?
     var cellsNewsForTable: [MainTableViewCellModel] = []
     var indicator = ActivityIndicator()
     
@@ -52,12 +52,18 @@ final class MainViewController: UIViewController {
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-       view.endEditing(true)
-       bottomConstraint?.constant = 0
-        UIView.animate(withDuration: Constants.standartDurationAnimation) {
-            self.view.layoutIfNeeded()
+        view.endEditing(true)
+    }
+    
+  
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > previousContentOffset && previousContentOffset >= 0 {
+            searchBar.isHidden = true
+        } else if scrollView.contentOffset.y < previousContentOffset {
+            searchBar.isHidden = false
         }
-   }
+        previousContentOffset = scrollView.contentOffset.y
+    }
 }
 
 // MARK: - Private functions
@@ -75,7 +81,7 @@ private extension MainViewController {
     }
     
     private func setupSearchBar() {
-        searchBar.frame = CGRect(x:0, y:0, width: tableNews.frame.size.width, height:33)
+        searchBar.frame = CGRect(x:0, y:0, width: tableNews.frame.size.width, height: 33)
         searchBar.delegate = self
         searchBar.barTintColor = UIColor.white
         searchBar.placeholder = "search"
@@ -94,7 +100,7 @@ private extension MainViewController {
 extension MainViewController: MainViewProtocol {
    
     func showFirstRow() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.tableNews.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         }
     }
