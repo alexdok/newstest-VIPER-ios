@@ -27,7 +27,7 @@ final class MainInteractor: MainInteractorProtocol {
         self.storage = storage
     }
     
-    func checkInternetConnection() -> Bool{
+    func checkInternetConnection() -> Bool {
         return networStatuskMonitor.isReachable
     }
     
