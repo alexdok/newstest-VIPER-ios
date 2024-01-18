@@ -32,7 +32,7 @@ final class NetworkServiceImpl: NetworkService {
         let session = URLSession(configuration: sessionConfig)
         let URLParams = createParamsForRequest(theme: theme, keyAPI: Constants.apiKey, page: page)
         guard let request = requestBilder.createRequestFrom(url: Constants.url, params: URLParams, httpMethod: Method.get.rawValue) else { return }
-        
+       
         let task = session.dataTask(with: request) { data, response, error in
             if error == nil, let data = data {
                 do {
@@ -126,7 +126,7 @@ final class NetworkServiceImpl: NetworkService {
             "from": dateForNewsYesterday,
             "to": dateForNewsToday,
             "sortBy": "popularity",
-            "apiKey": keyAPI
+        //    "apiKey": keyAPI
         ]
         return URLParams
     }

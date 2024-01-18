@@ -11,7 +11,6 @@ protocol URLQueryParameterStringConvertible {
 }
 
 extension Dictionary : URLQueryParameterStringConvertible {
-
     var queryParameters: String {
         var parts: [String] = []
         for (key, value) in self {

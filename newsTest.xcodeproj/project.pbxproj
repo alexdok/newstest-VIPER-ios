@@ -20,6 +20,7 @@
 		907682F22AA0D9E10051F0BB /* WebPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907682EE2AA0D9E10051F0BB /* WebPresenter.swift */; };
 		907682F42AA0D9E10051F0BB /* WebInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907682F02AA0D9E10051F0BB /* WebInteractor.swift */; };
 		9084EDEF2AB4745200B752D5 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9084EDEE2AB4745200B752D5 /* WebViewModel.swift */; };
+		909DAE5F2B0B57AE0080D83B /* NetworkMonitorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CEA12A9F3B3900F53C57 /* NetworkMonitorManager.swift */; };
 		909F37452AB1DF5900D28466 /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F37442AB1DF5900D28466 /* LocalStorageManager.swift */; };
 		90C4CE632A9F1EF500F53C57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CE622A9F1EF500F53C57 /* AppDelegate.swift */; };
 		90C4CE652A9F1EF500F53C57 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CE642A9F1EF500F53C57 /* SceneDelegate.swift */; };
@@ -33,7 +34,6 @@
 		90C4CE8E2A9F25CB00F53C57 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CE8D2A9F25CB00F53C57 /* MainTableViewCell.swift */; };
 		90C4CE9B2A9F314F00F53C57 /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CE9A2A9F314F00F53C57 /* AlertBuilder.swift */; };
 		90C4CE9E2A9F376500F53C57 /* MainViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CE9D2A9F376500F53C57 /* MainViewController+extension.swift */; };
-		90C4CEA22A9F3B3900F53C57 /* NetworkMonitorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CEA12A9F3B3900F53C57 /* NetworkMonitorManager.swift */; };
 		90C4CEA42A9F3B9E00F53C57 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CEA32A9F3B9E00F53C57 /* NetworkService.swift */; };
 		90C4CEA62A9F3EEA00F53C57 /* UITableView+ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CEA52A9F3EEA00F53C57 /* UITableView+ReusableView.swift */; };
 		90C4CEAE2A9F61CD00F53C57 /* URL+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4CEAD2A9F61CD00F53C57 /* URL+extension.swift */; };
@@ -139,8 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				90C4CEA32A9F3B9E00F53C57 /* NetworkService.swift */,
-				90E695C92AE7FF1F00A2B88F /* TestNewNetworkServiceinWorkProgress */,
 				90C4CEA12A9F3B3900F53C57 /* NetworkMonitorManager.swift */,
+				90E695C92AE7FF1F00A2B88F /* TestNewNetworkServiceinWorkProgress */,
 				90C4CEB12A9F623B00F53C57 /* NetworkSupport */,
 			);
 			path = NetworkLayer;
@@ -454,6 +454,7 @@
 				90C4CE8A2A9F209700F53C57 /* MainRouter.swift in Sources */,
 				907682EC2AA0D43F0051F0BB /* WebView+extension.swift in Sources */,
 				90E695C82AE7FE9B00A2B88F /* Method.swift in Sources */,
+				909DAE5F2B0B57AE0080D83B /* NetworkMonitorManager.swift in Sources */,
 				907682E52AA083CF0051F0BB /* DetailPresenter.swift in Sources */,
 				907682E42AA083CF0051F0BB /* DetailInteractor.swift in Sources */,
 				90C4CEB72A9F628300F53C57 /* News.swift in Sources */,
@@ -464,7 +465,6 @@
 				907682E22AA083CF0051F0BB /* DetailModuleBuilder.swift in Sources */,
 				904B11722AB9C35A00AE4668 /* StorageNews.swift in Sources */,
 				90C4CE9B2A9F314F00F53C57 /* AlertBuilder.swift in Sources */,
-				90C4CEA22A9F3B3900F53C57 /* NetworkMonitorManager.swift in Sources */,
 				907682F42AA0D9E10051F0BB /* WebInteractor.swift in Sources */,
 				909F37452AB1DF5900D28466 /* LocalStorageManager.swift in Sources */,
 				90E695BC2AE7F3C100A2B88F /* NetworkClient.swift in Sources */,
